@@ -1,5 +1,5 @@
 import { productApi } from '@/api/productApi';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useProductApi = () => {
     return useQuery({
@@ -20,4 +20,8 @@ export const useDetailProductApi = (id) => {
         queryKey: [`get-detail-product${id}`],
         queryFn: () => productApi.getDetail(id),
     });
+};
+
+export const useSearchApi = () => {
+    return useMutation(productApi.search);
 };

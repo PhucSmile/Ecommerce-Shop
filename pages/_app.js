@@ -9,7 +9,8 @@ import Head from 'next/head';
 import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { Provider } from 'react-redux';
-// import { store } from "store/store";
+import { store } from '@/store/store';
+
 import { ToastContainer } from 'react-toastify';
 import { MainLayout } from '@/layout';
 
@@ -22,8 +23,6 @@ const queryClient = new QueryClient({
         },
     },
 });
-
-// const queryClient = new QueryClient();
 
 function MyApp(props) {
     const { Component, pageProps, session, settings } = props;
@@ -70,22 +69,22 @@ function MyApp(props) {
                 <link rel="shortcut icon" href="/favicon.png" />
             </Head>
             <SessionProvider session={session}>
-                {/* <Provider store={store}> */}
-                <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-                    <QueryClientProvider client={queryClient}>
-                        <Hydrate state={pageProps.dehydratedState}>
-                            <ToastContainer
-                                theme="light"
-                                position="top-right"
-                                autoClose={3000}
-                                closeOnClick
-                                pauseOnHover={false}
-                            />
-                            {renderWithLayout(<Component {...pageProps} />)}
-                        </Hydrate>
-                    </QueryClientProvider>
-                </AnimatePresence>
-                {/* </Provider> */}
+                <Provider store={store}>
+                    <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
+                        <QueryClientProvider client={queryClient}>
+                            <Hydrate state={pageProps.dehydratedState}>
+                                <ToastContainer
+                                    theme="light"
+                                    position="top-right"
+                                    autoClose={3000}
+                                    closeOnClick
+                                    pauseOnHover={false}
+                                />
+                                {renderWithLayout(<Component {...pageProps} />)}
+                            </Hydrate>
+                        </QueryClientProvider>
+                    </AnimatePresence>
+                </Provider>
             </SessionProvider>
         </>
     );

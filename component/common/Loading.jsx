@@ -7,7 +7,7 @@ const Loading = () => {
     const [open, setOpen] = useState(true);
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={() => setOpen(true)}>
+            <Dialog as="div" className="fixed z-50 inset-0 overflow-y-auto" onClose={() => setOpen(true)}>
                 <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                     <Transition.Child
                         as={Fragment}

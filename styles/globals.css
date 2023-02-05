@@ -66,13 +66,16 @@
 }
 
 .badge {
-    @apply absolute  right-[-30%] top-[-40%] w-5 h-5 leading-5 rounded-full bg-danger text-center text-white;
+    @apply absolute text-xs lg:text-sm  right-[-30%] top-[-40%] w-5 h-5 leading-5 rounded-full bg-danger text-center text-white;
 }
 .input {
     @apply shadow-detail border-b-[1px] border-primary  block w-full  pl-2 leading-10 sm:text-sm  focus:outline-none;
 }
 .tab-detail {
     @apply py-2.5 text-lg font-medium leading-5 cursor-pointer;
+}
+.tags-popular {
+    @apply flex items-center justify-center bg-[#F6F6F6] rounded-lg text-sm lg:text-base px-1 md:px-2 lg:px-5 py-1 md:py-2 gap-[6px] cursor-pointer;
 }
 
 section {
@@ -90,41 +93,6 @@ section {
     animation: slide-down 0.8s;
 }
 
-.nav__link .menu span a {
-    position: relative;
-    background-image: linear-gradient(to right, #df2020, #df2020 50%, #000 50%);
-    background-size: 200% 100%;
-    background-position: -100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out;
-}
-
-.nav__link .menu span a::before {
-    content: '';
-    background: #df2020;
-    display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    transition: all 0.3s ease-in-out;
-}
-.nav__link .menu span a:hover {
-    background-position: 0;
-}
-.nav__link .menu span a:hover::before {
-    width: 100%;
-}
-
-.nav__link .menu .active__nav-link a {
-    color: #df2020 !important;
-    background-position: 0 !important;
-}
-.nav__link .menu .active__nav-link a::before {
-    width: 100% !important;
-}
 /* slider detail product */
 ul.slick-dots.slick-thumb {
     display: flex !important;
@@ -152,6 +120,10 @@ li.slick-active {
     ul.slick-dots.slick-thumb {
         bottom: -30% !important;
     }
+
+    .menu {
+        width: 60% !important;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -161,9 +133,7 @@ li.slick-active {
     ul.slick-dots.slick-thumb {
         bottom: -25% !important;
     }
-}
 
-@media only screen and (max-width: 992px) {
     .navigation {
         position: fixed;
         top: 0;
@@ -183,22 +153,16 @@ li.slick-active {
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 999;
         background-color: rgba(0, 0, 0, 0.5);
     }
     .menu {
         position: absolute;
         top: 0;
         right: 0;
-        width: 250px;
+        width: 45%;
         height: 100%;
         background-color: white;
-        z-index: 9999;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        row-gap: 30px;
+        padding: 16px 8px 0 8px !important;
     }
 
     .active__nav-link {

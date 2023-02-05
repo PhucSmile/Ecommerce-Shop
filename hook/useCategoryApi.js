@@ -8,3 +8,10 @@ export const useCategoryApi = ({ params, options }) => {
         ...options,
     });
 };
+
+export const useAllCategoriesApi = () => {
+    return useQuery({
+        queryKey: [`get-all-categories`],
+        queryFn: categoryApi.getAllCategories,
+    });
+};

@@ -1,4 +1,4 @@
-import SignIn from '@/component/loginPage/signIn/SignIn';
+import SignIn from '@/component/page/loginPage/signIn/SignIn';
 import NestedLayout from '@/layout/NestedLayout';
 import React from 'react';
 

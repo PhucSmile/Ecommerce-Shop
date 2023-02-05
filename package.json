@@ -10,8 +10,10 @@
     },
     "dependencies": {
         "@headlessui/react": "^1.7.7",
+        "@heroicons/react": "^2.0.14",
         "@hookform/resolvers": "^2.9.10",
         "@next/font": "13.1.4",
+        "@reduxjs/toolkit": "^1.9.2",
         "@tanstack/react-query": "^4.22.0",
         "axios": "^1.2.3",
         "clsx": "^1.2.1",

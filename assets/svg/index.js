@@ -1,4 +1,4 @@
-export const IconUp = ({ className, isActive }) => {
+export const IconUp = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export const IconUp = ({ className, isActive }) => {
     );
 };
 
-export const IconHead = ({ className, isActive }) => {
+export const IconHead = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ export const IconHead = ({ className, isActive }) => {
     );
 };
 
-export const IconCart = ({ className, isActive }) => {
+export const IconCart = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@ export const IconCart = ({ className, isActive }) => {
     );
 };
 
-export const IconMenu = ({ className, isActive }) => {
+export const IconMenu = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +70,7 @@ export const IconMenu = ({ className, isActive }) => {
     );
 };
 
-export const IconTruck = ({ className, isActive }) => {
+export const IconTruck = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +89,7 @@ export const IconTruck = ({ className, isActive }) => {
     );
 };
 
-export const IconRefresh = ({ className, isActive }) => {
+export const IconRefresh = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ export const IconRefresh = ({ className, isActive }) => {
     );
 };
 
-export const IconSecure = ({ className, isActive }) => {
+export const IconSecure = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@ export const IconSecure = ({ className, isActive }) => {
     );
 };
 
-export const IconDollar = ({ className, isActive }) => {
+export const IconDollar = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ export const IconDollar = ({ className, isActive }) => {
     );
 };
 
-export const IconAdd = ({ className, isActive }) => {
+export const IconAdd = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +161,7 @@ export const IconAdd = ({ className, isActive }) => {
     );
 };
 
-export const IconGit = ({ className, isActive }) => {
+export const IconGit = () => {
     return (
         <svg viewBox="0 0 24 24" className="h-6 w-6 fill-slate-900">
             <path
@@ -173,7 +173,7 @@ export const IconGit = ({ className, isActive }) => {
     );
 };
 
-export const IconFB = ({ className, isActive }) => {
+export const IconFB = () => {
     return (
         <svg className="w-6 h-6 fill-slate-900 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -181,7 +181,7 @@ export const IconFB = ({ className, isActive }) => {
     );
 };
 
-export const IconLocation = ({ className, isActive }) => {
+export const IconLocation = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +201,7 @@ export const IconLocation = ({ className, isActive }) => {
     );
 };
 
-export const IconPhone = ({ className, isActive }) => {
+export const IconPhone = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +220,7 @@ export const IconPhone = ({ className, isActive }) => {
     );
 };
 
-export const IconEmail = ({ className, isActive }) => {
+export const IconEmail = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +238,7 @@ export const IconEmail = ({ className, isActive }) => {
     );
 };
 
-export const IconExclamation = ({ className, isActive }) => {
+export const IconExclamation = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -257,7 +257,7 @@ export const IconExclamation = ({ className, isActive }) => {
     );
 };
 
-export const IconArrowDown = ({ className, isActive }) => {
+export const IconArrowDown = () => {
     return (
         <svg width={11} height={8} viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -271,7 +271,7 @@ export const IconArrowDown = ({ className, isActive }) => {
     );
 };
 
-export const IconLogout = ({ className, isActive }) => {
+export const IconLogout = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -285,6 +285,45 @@ export const IconLogout = ({ className, isActive }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+            />
+        </svg>
+    );
+};
+
+export const IconSearch = ({ className }) => {
+    return (
+        <svg
+            aria-hidden="true"
+            className={className}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+        </svg>
+    );
+};
+
+export const IconClose = ({ className }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className={className}
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
         </svg>
     );

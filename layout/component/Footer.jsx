@@ -19,8 +19,8 @@ const ListCategories = [
 
 const ListLinks = [
     {
-        name: 'Shop',
-        url: '/shop',
+        name: 'Search',
+        url: '/search',
     },
     {
         name: 'Cart',

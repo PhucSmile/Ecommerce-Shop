@@ -9,4 +9,7 @@ export const productApi = {
     getDetail(id) {
         return axiosApi.get(`/products/${id}`);
     },
+    search(params) {
+        return axiosApi.get(`/products/search?q=${params}`);
+    },
 };
