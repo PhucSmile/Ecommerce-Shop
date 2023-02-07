@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from '@/component/common';
 import Loading from '@/component/common/Loading';
 import Select from '@/component/select/Select';
-import { useAllCategoriesApi } from '@/hook/useCategoryApi';
+import { useAllCategoriesApi, useFilterCategoryApi } from '@/hook/useCategoryApi';
 import { useSearchApi } from '@/hook/useProductApi';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
@@ -10,26 +10,45 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import ProductCart from '@/component/product/ProductCart';
 
-const listSortPrice = ['Low Price', 'Hight Price'];
+const listSortPrice = ['Sort', 'Reverse'];
 const SearchPage = () => {
-    const [dataSearch, setDataSearrch] = useState();
+    const [dataSearch, setDataSearch] = useState();
+    // paginate
+    const [page, setPage] = useState(12);
+    const [pageNumber, setPageNumber] = useState(0);
+    const [isCheckedPagination, setIsCheckedPagination] = useState(false);
+    // select
+    const [selectedCategories, setSelectedCategories] = useState('Select category');
+    const [selectedPrice, setSelectedPrice] = useState('Sort');
     const router = useRouter();
     const params = {
         ...router.query,
     };
     const resultSearch = useSelector((state) => state.search.search);
+
     // fetch data query
     const { data: dataCategories } = useAllCategoriesApi();
     const useSearchMutate = useSearchApi();
+    const useSearchCategoriesMutate = useFilterCategoryApi();
     const queryClient = useQueryClient();
+
+    // console.log('resultSearch', resultSearch);
+    console.log('page', page);
+    console.log('pageNumber', pageNumber);
 
     useEffect(() => {
         (async () => {
             try {
-                await useSearchMutate.mutate(resultSearch.q, {
+                const params = {
+                    q: resultSearch,
+                };
+                await useSearchMutate.mutate(params, {
                     onSuccess: (res) => {
                         queryClient.refetchQueries();
-                        setDataSearrch(res?.data);
+                        setDataSearch(res?.data.products);
+                        setIsCheckedPagination(false);
+                        setPage(12);
+                        setPageNumber(res?.data.total);
                     },
                     onError: (err) => {
                         console.log('error', err);
@@ -40,12 +59,109 @@ const SearchPage = () => {
     }, [resultSearch]);
     // console.log('dataSearch', dataSearch);
 
-    const handleReset = () => {};
-    const handleStopFilter = () => {};
-    const handleFilterSearch = () => {};
-    if (useSearchMutate.isLoading) {
-        return <Loading />;
-    }
+    const handleReset = () => {
+        setSelectedCategories('Select category');
+        setSelectedPrice('Sort');
+    };
+    const handleStopFilter = async () => {
+        router.push('/search');
+        const params = {
+            q: '',
+        };
+        try {
+            await useSearchMutate.mutate(params, {
+                onSuccess: (res) => {
+                    queryClient.refetchQueries();
+                    setDataSearch(res?.data.products);
+                    // setPageNumber(res?.data.total)
+                    setPageNumber(res?.data.total);
+                },
+                onError: (err) => {
+                    console.log('error', err);
+                },
+            });
+        } catch (error) {}
+    };
+    const handleFilterSearch = async () => {
+        try {
+            if (selectedCategories !== 'Select category') {
+                const params = {
+                    category: selectedCategories,
+                };
+                await useSearchCategoriesMutate.mutate(params, {
+                    onSuccess: (res) => {
+                        queryClient.refetchQueries();
+                        setDataSearch(res?.data.products);
+                        setIsCheckedPagination(true);
+                        setPage(12);
+                        setPageNumber(res?.data.total);
+
+                        // setPageNumber(res?.data.total)
+                    },
+                    onError: (err) => {
+                        console.log(err);
+                    },
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const handlePagination = async () => {
+        let params = {};
+        setPage((prev) => prev + 12);
+        try {
+            if (resultSearch === '' && selectedCategories === 'Select category' && !isCheckedPagination) {
+                params = {
+                    q: '',
+                    skip: page,
+                };
+                console.log(' lọt vào resultSearch', params);
+            } else if (selectedCategories !== 'Select category' && isCheckedPagination) {
+                params = {
+                    skip: page,
+                    category: selectedCategories,
+                };
+                console.log(' lọt vào selectedCategories', params);
+            } else {
+                params = {
+                    q: resultSearch,
+                    skip: page,
+                };
+            }
+
+            if (!params.category && !isCheckedPagination) {
+                console.log('ko gọi category', params);
+                await useSearchMutate.mutate(params, {
+                    onSuccess: (res) => {
+                        setDataSearch((prev) => [...prev, ...res?.data?.products]);
+                        setPageNumber(res?.data.total);
+                    },
+                    onError: (err) => {},
+                });
+            } else {
+                console.log(' gọi category', params);
+                await useSearchCategoriesMutate.mutate(params, {
+                    onSuccess: (res) => {
+                        setDataSearch(res?.data.products);
+                        setPageNumber(res?.data.total);
+
+                        // setPageNumber(res?.data.total)
+                    },
+                    onError: (err) => {},
+                });
+            }
+
+            // setPageNumber(page + 1);
+        } catch (error) {}
+    };
+
+    // if (useSearchMutate.isLoading || (useSearchCategoriesMutate.isLoading && page <= 12)) {
+    //     return <Loading />;
+    // }
+
+    // console.log('du lieeju cu', dataSearch);
+
     return (
         <Container>
             <div className="grid grid-cols-3 gap-[122px] ">
@@ -67,7 +183,7 @@ const SearchPage = () => {
                     <h3 className="font-bold text-xl pl-[10px] py-[10px] bg-[#F3F4F9]">Bộ lọc tìm kiếm</h3>
                     <div className="px-4 pt-4 ">
                         {/* input search */}
-                        <div className="flex flex-col mb-4">
+                        {/* <div className="flex flex-col mb-4">
                             <label htmlFor="search" className="text-sm font-semibold mb-2">
                                 Search
                             </label>
@@ -77,22 +193,26 @@ const SearchPage = () => {
                                 placeholder="Search...."
                                 className="block shadow-md w-full appearance-none rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-gray-900 placeholder-gray-400 focus:border-primary focus:bg-white focus:outline-none  sm:text-sm"
                             />
-                        </div>
+                        </div> */}
                         {/*search categories */}
-                        <Select data={dataCategories?.data} title="Categories" defaultPlaceholder="Select category" />
+                        <Select
+                            data={dataCategories?.data}
+                            title="Categories"
+                            selected={selectedCategories}
+                            setSelected={setSelectedCategories}
+                        />
 
                         {/* sort price */}
-                        <Select data={listSortPrice} title="Sort price" defaultPlaceholder="Select price" />
+                        <Select
+                            data={listSortPrice}
+                            title="Sort price"
+                            selected={selectedPrice}
+                            setSelected={setSelectedPrice}
+                        />
 
                         <div className="flex justify-end items-center gap-[16px] mt-5 mb-[303px]">
-                            <span className=" cursor-pointer px-1 py-1" onClick={handleReset}>
-                                Đặt lại
-                            </span>
-                            <span
-                                className="font-bold text-[#FF6C00] cursor-pointer px-1 py-1"
-                                onClick={handleFilterSearch}
-                            >
-                                Xong
+                            <span className=" cursor-pointer px-1 py-1 hover:font-semibold" onClick={handleReset}>
+                                Reset
                             </span>
                         </div>
                     </div>
@@ -100,20 +220,40 @@ const SearchPage = () => {
                         <button className="btn-outline px-[40px]" onClick={handleStopFilter}>
                             Bỏ lọc
                         </button>
-                        <button className="btn px-[40px]" onClick={handleFilterSearch}>
-                            Lọc
+                        <button className="btn-primary px-[40px]" onClick={handleFilterSearch}>
+                            Filter
                         </button>
                     </div>
                 </div>
 
                 {/* right */}
                 <div className="col-span-2  w-full ">
-                    <div className="grid grid-cols-3 gap-[25px]">
-                        {dataSearch &&
-                            dataSearch?.products?.map((product) => {
-                                return <ProductCart key={product.id} data={product} />;
-                            })}
+                    <div className="grid grid-cols-4 gap-[20px]">
+                        {selectedPrice === 'Sort'
+                            ? dataSearch
+                                  ?.concat()
+                                  .sort()
+                                  .map((product) => {
+                                      return <ProductCart key={product.id} data={product} />;
+                                  })
+                            : dataSearch
+                                  ?.concat()
+                                  .reverse()
+                                  .map((product) => {
+                                      return <ProductCart key={product.id} data={product} />;
+                                  })}
                     </div>
+
+                    {page < pageNumber ? (
+                        <div className="flex justify-center items-center m-[36px]">
+                            <span
+                                className="text-lg font-medium hover:font-bold cursor-pointer px-2 py-3"
+                                onClick={handlePagination}
+                            >
+                                Load more...
+                            </span>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </Container>

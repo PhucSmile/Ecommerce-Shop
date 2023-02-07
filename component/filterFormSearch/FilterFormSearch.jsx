@@ -24,11 +24,7 @@ export default function FilterFromSearch() {
             e.preventDefault();
             try {
                 // save results for search
-                await dispatch(
-                    userActionSearch.saveSearch({
-                        q: querySearch,
-                    }),
-                );
+                await dispatch(userActionSearch.saveSearch(querySearch));
                 // save results render history search
                 await dispatch(
                     userActionSearch.addHistorySearch({

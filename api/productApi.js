@@ -10,6 +10,6 @@ export const productApi = {
         return axiosApi.get(`/products/${id}`);
     },
     search(params) {
-        return axiosApi.get(`/products/search?q=${params}`);
+        return axiosApi.get(`/products/search?q=${params.q}&limit=12&skip=${params.skip || 0}`);
     },
 };

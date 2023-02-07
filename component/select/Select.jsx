@@ -2,17 +2,7 @@ import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-const people = [
-    { name: 'Wade Cooper' },
-    { name: 'Arlene Mccoy' },
-    { name: 'Devon Webb' },
-    { name: 'Tom Cook' },
-    { name: 'Tanya Fox' },
-    { name: 'Hellen Schmidt' },
-];
-
-const Select = ({ data, title, defaultPlaceholder }) => {
-    const [selected, setSelected] = useState(defaultPlaceholder);
+const Select = ({ data, title, selected, setSelected }) => {
     return (
         <div className="mb-4">
             <span className="text-sm font-semibold mb-2">{title}</span>

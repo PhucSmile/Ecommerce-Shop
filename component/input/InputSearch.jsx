@@ -43,7 +43,7 @@ const InputSearch = ({
         <div>
             <Combobox value={selectedSearch} onChange={setSelectedSearch}>
                 <div className="relative mt-1">
-                    <div className=" flex items-center  border-[1px] border-solid border-primary rounded-2xl overflow-hidden h-[48px]">
+                    <div className=" flex justify-between items-center  border-[1px] border-solid border-primary rounded-2xl overflow-hidden h-[48px]">
                         <div className="flex items-center pl-1 md:pl-[19px] pr-2 pointer-events-none">
                             <IconSearch className="hidden md:block w-6 h-6 text-primary dark:text-gray-400" />
                         </div>

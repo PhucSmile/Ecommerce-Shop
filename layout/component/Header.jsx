@@ -6,30 +6,11 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { Popover, Transition } from '@headlessui/react';
 
-import React, { Fragment, useRef, useState } from 'react';
-import { IconCart, IconClose, IconHead, IconMenu } from '@/assets/svg';
+import React, { useRef, useState } from 'react';
+import { IconCart, IconClose, IconMenu } from '@/assets/svg';
 import { useSession } from 'next-auth/react';
 import ProfileUser from '@/component/profileUser/ProfileUser';
 import FilterFromSearch from '@/component/filterFormSearch/FilterFormSearch';
-
-const navLinks = [
-    {
-        display: 'Home',
-        path: '/',
-    },
-    {
-        display: 'Shop',
-        path: '/shop',
-    },
-    {
-        display: 'Cart',
-        path: '/cart',
-    },
-    {
-        display: 'Contact',
-        path: '/contact',
-    },
-];
 
 export function Header() {
     const { data: session, status } = useSession();
@@ -84,11 +65,6 @@ export function Header() {
                             <span className="flex md:hidden items-center mb-4 cursor-pointer" onClick={menuToggle}>
                                 <IconClose className="w-8 h-8" /> close
                             </span>
-                            {/* {navLinks.map((item, index) => (
-                                <span key={index} className={currentRoute === item.path ? 'active__nav-link ' : null}>
-                                    <Link href={item.path}>{item.display}</Link>
-                                </span>
-                            ))} */}
                             <FilterFromSearch />
                         </div>
                     </div>

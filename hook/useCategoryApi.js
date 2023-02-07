@@ -1,5 +1,5 @@
 import { categoryApi } from '@/api/categoryApi';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useCategoryApi = ({ params, options }) => {
     return useQuery({
@@ -7,6 +7,10 @@ export const useCategoryApi = ({ params, options }) => {
         queryFn: () => categoryApi.get(params),
         ...options,
     });
+};
+
+export const useFilterCategoryApi = () => {
+    return useMutation(categoryApi.getFilter);
 };
 
 export const useAllCategoriesApi = () => {
