@@ -1,7 +1,8 @@
+import CartPage from '@/component/page/cartPage/CartPage';
 import React from 'react';
 
 const index = () => {
-    return <div>cart</div>;
+    return <CartPage />;
 };
 
 export default index;

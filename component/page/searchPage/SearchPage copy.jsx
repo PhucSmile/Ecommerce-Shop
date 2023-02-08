@@ -18,7 +18,7 @@ const SearchPage = () => {
     const [pageNumber, setPageNumber] = useState(0);
     const [isCheckedPagination, setIsCheckedPagination] = useState(false);
     // select
-    const [selectedCategories, setSelectedCategories] = useState('Filter by category');
+    const [selectedCategories, setSelectedCategories] = useState('Select category');
     const [selectedPrice, setSelectedPrice] = useState('Sort');
     const router = useRouter();
     const params = {
@@ -55,7 +55,7 @@ const SearchPage = () => {
     }, [resultSearch]);
 
     const handleReset = () => {
-        setSelectedCategories('Filter by category');
+        setSelectedCategories('Select category');
         setSelectedPrice('Sort');
     };
     const handleStopFilter = async () => {
