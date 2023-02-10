@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { setHistorySearch, setSearch } from '../localStorage/setLocalStorage';
+import { fetchHistorySearchLocal, fetchSearchLocal } from '../localStorage/getLocalStorage';
 
 const initialState = {
-    search: '',
-    historySearch: [],
-    categoryTad: {},
+    search: fetchSearchLocal(),
+    historySearch: fetchHistorySearchLocal(),
 };
 
 export const useSearch = createSlice({
@@ -13,6 +14,7 @@ export const useSearch = createSlice({
         // save results search
         saveSearch(state, action) {
             state.search = action.payload;
+            setSearch(state.search);
         },
         // save history search
         addHistorySearch(state, action) {
@@ -24,13 +26,14 @@ export const useSearch = createSlice({
                     q: newItems.q,
                 });
             }
-            localStorage.setItem('historySearch', JSON.stringify(state.historySearch));
+            setHistorySearch(state.historySearch);
         },
     },
 });
 
 // Action creators are generated for each case reducer function
 
-export const userActionSearch = useSearch.actions;
-
+export const { saveSearch, addHistorySearch } = useSearch.actions;
+export const getAllSearch = (state) => state.search.search;
+export const getHistorySearch = (state) => state.search.historySearch;
 export default useSearch;

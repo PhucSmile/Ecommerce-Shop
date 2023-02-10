@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Helmet = (props) => {
-    document.title = props.title;
+    // document.title = props?.title || '';
     return <div className="w-full">{props.children}</div>;
 };
 

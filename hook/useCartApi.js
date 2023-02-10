@@ -4,40 +4,29 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 export const useGetCartApi = (id) => {
     return useQuery({
         queryKey: ['get-cart'],
-        queryFn: () => cartApi.get(id),
-        keepPreviousData: true,
+        queryFn: () => cartApi.getCart(id),
+        enabled: !!id,
+    });
+};
+
+export const useGetCartUserApi = (id) => {
+    return useQuery({
+        queryKey: ['get-cart-user'],
+        queryFn: () => cartApi.getCartUser(id),
+        enabled: !!id,
     });
 };
 
 export const useAddCartApi = () => {
-    const queryClient = useQueryClient();
-    return useMutation(cartApi.add, {
-        onSuccess: () => {
-            queryClient.refetchQueries();
-        },
-        onError: (err) => {},
-    });
+    return useMutation(cartApi.add);
 };
 
 export const useEditCartApi = (id) => {
-    const queryClient = useQueryClient();
-    return useMutation(cartApi.edit, {
-        onSuccess: () => {
-            queryClient.refetchQueries();
-        },
-        onError: (err) => {},
+    return useMutation((data) => {
+        return Promise.all([cartApi.edit(id, data)]);
     });
 };
 
 export const useDeleteCartApi = (id) => {
-    const queryClient = useQueryClient();
-    return useMutation(cartApi.delete, {
-        onSuccess: () => {
-            queryClient.invalidateQueries({
-                queryKey: ['get-cart'],
-                queryFn: () => cartApi.get(id),
-                keepPreviousData: true,
-            });
-        },
-    });
+    return useMutation(cartApi.delete);
 };

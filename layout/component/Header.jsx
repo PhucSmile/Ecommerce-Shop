@@ -4,13 +4,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { motion } from 'framer-motion';
-import { Popover, Transition } from '@headlessui/react';
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IconCart, IconClose, IconMenu } from '@/assets/svg';
 import { useSession } from 'next-auth/react';
 import ProfileUser from '@/component/profileUser/ProfileUser';
 import FilterFromSearch from '@/component/filterFormSearch/FilterFormSearch';
+import { useSelector } from 'react-redux';
+import { getTotalQuantity } from '@/store/slice/useCart';
 
 export function Header() {
     const { data: session, status } = useSession();
@@ -18,8 +19,15 @@ export function Header() {
     const router = useRouter();
     const currentRoute = router.pathname;
     const menuRef = useRef(null);
+    const quantityCart = useSelector(getTotalQuantity);
 
     const [stickyScroll, setStickyScroll] = useState(false);
+    const [quantity, setQuantity] = useState(0);
+
+    useEffect(() => {
+        setQuantity(quantityCart);
+    }, [quantityCart]);
+
     // console.log('currentRoute', currentRoute);
 
     // window.onScroll = () => {
@@ -73,7 +81,7 @@ export function Header() {
                         <Link href={'/cart'}>
                             <motion.span whileTap={{ scale: 1.2 }} className="block w-7 h-7 relative cursor-pointer">
                                 <IconCart />
-                                <span className="badge">1</span>
+                                {quantity > 0 && <span className="badge">{quantity}</span>}
                             </motion.span>
                         </Link>
 

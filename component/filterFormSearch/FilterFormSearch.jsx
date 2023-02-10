@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import InputSearch from '../input/InputSearch';
 import useDebounce from '@/hook/useDebounce/UseDebounce';
 
-import { userActionSearch } from '@/store/slice/useSearch';
+import { addHistorySearch, saveSearch } from '@/store/slice/useSearch';
 import { useDispatch } from 'react-redux';
 
 export default function FilterFromSearch() {
@@ -24,10 +24,10 @@ export default function FilterFromSearch() {
             e.preventDefault();
             try {
                 // save results for search
-                await dispatch(userActionSearch.saveSearch(querySearch));
+                await dispatch(saveSearch(querySearch));
                 // save results render history search
                 await dispatch(
-                    userActionSearch.addHistorySearch({
+                    addHistorySearch({
                         id: Math.floor(Math.random() * 100) + 1,
                         q: querySearch,
                     }),

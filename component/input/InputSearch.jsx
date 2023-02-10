@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, Fragment } from 'react';
+import { useRef, Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { IconSearch } from '@/assets/svg';
-import { userActionSearch } from '@/store/slice/useSearch';
+import { getHistorySearch, saveSearch } from '@/store/slice/useSearch';
 import { useAllCategoriesApi } from '@/hook/useCategoryApi';
 
 const InputSearch = ({
@@ -16,16 +16,11 @@ const InputSearch = ({
     handleKeypress,
 }) => {
     const { data: dataCategories } = useAllCategoriesApi();
-    const [dataHistory, setDataHistory] = useState();
+
     const focusRef = useRef();
-    const renderHistorySearch = useSelector((state) => state.search.historySearch);
+    const renderHistorySearch = useSelector(getHistorySearch);
     const dispatch = useDispatch();
     const router = useRouter();
-
-    useEffect(() => {
-        const data = JSON.parse(localStorage.getItem('historySearch'));
-        setDataHistory(data?.slice(0, 8));
-    }, [renderHistorySearch]);
 
     const handleClose = () => {
         setQuerySearch('');
@@ -34,10 +29,12 @@ const InputSearch = ({
 
     const filteredPeople =
         querySearch === ''
-            ? dataHistory
-            : dataHistory?.filter((item) =>
-                  item.q.toLowerCase().replace(/\s+/g, '').includes(querySearch.toLowerCase().replace(/\s+/g, '')),
-              );
+            ? renderHistorySearch
+            : renderHistorySearch
+                  .slice(0, 10)
+                  ?.filter((item) =>
+                      item.q.toLowerCase().replace(/\s+/g, '').includes(querySearch.toLowerCase().replace(/\s+/g, '')),
+                  );
 
     return (
         <div>
@@ -139,7 +136,7 @@ const InputSearch = ({
                                                                     }`}
                                                                     onClick={async () => {
                                                                         await dispatch(
-                                                                            userActionSearch.saveSearch({
+                                                                            saveSearch({
                                                                                 q: person.q,
                                                                             }),
                                                                         );

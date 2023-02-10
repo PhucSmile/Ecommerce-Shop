@@ -9,8 +9,26 @@ import { motion } from 'framer-motion';
 import ReactStars from 'react-rating-stars-component';
 import TabDetail from '@/component/tab/TabDetail';
 import Related from '@/component/related/Related';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/slice/useCart';
+import { toast } from 'react-toastify';
 
 const DetailSection = ({ data }) => {
+    const dispatch = useDispatch();
+    const handleAddCart = async () => {
+        try {
+            await dispatch(
+                addToCart({
+                    id: data.id,
+                    title: data.title,
+                    image: data.images[0],
+                    price: data.price,
+                }),
+            );
+            toast.success('Product added to successfully');
+        } catch (error) {}
+    };
+
     const setting = {
         size: 30,
         value: data?.rating,
@@ -40,7 +58,10 @@ const DetailSection = ({ data }) => {
     };
     return (
         <Helmet title="Detail">
-            <CommonSection title={data?.category} image={'/images/common/common.png'} />
+            <CommonSection
+                title={data?.category ? data?.category.replace('-', ' ') : ''}
+                image={'/images/common/common.png'}
+            />
             <Container>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-10 lg:my-[60px]">
                     <div>
@@ -78,12 +99,19 @@ const DetailSection = ({ data }) => {
                         <div className="flex  items-center gap-10 my-4">
                             <span className="text-xl font-semibold">{data?.price}$</span>
                             <div className="flex flex-col  gap-1">
-                                <span className="font-normal">Brand: {data?.brand}</span>
-                                <span className="font-normal">Category: {data?.category}</span>
+                                <span className="font-normal">
+                                    Brand: <span className="uppercase">{data?.brand}</span>
+                                </span>
+                                <span className="font-normal">
+                                    Category:{' '}
+                                    <span className="uppercase">
+                                        {data?.category ? data?.category.replace('-', ' ') : ''}
+                                    </span>
+                                </span>
                             </div>
                         </div>
                         <p className="text-text mb-8 lg:mb-10">{data?.description}</p>
-                        <motion.button whileTap={{ scale: 1.5 }} className="btn-primary">
+                        <motion.button whileTap={{ scale: 1.5 }} className="btn-primary" onClick={handleAddCart}>
                             Add To Cart
                         </motion.button>
                     </div>

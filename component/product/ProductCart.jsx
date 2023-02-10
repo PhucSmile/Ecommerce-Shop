@@ -5,10 +5,21 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { IconAdd } from '@/assets/svg';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '@/store/slice/useCart';
 
 const ProductCart = ({ data }) => {
+    const dispatch = useDispatch();
     const handleAddCart = useCallback(async () => {
-        console.log('addCart', data?.id);
+        console.log('id cart', data);
+        await dispatch(
+            addToCart({
+                id: data.id,
+                title: data.title,
+                image: data.images[0],
+                price: data.price,
+            }),
+        );
         toast.success('Product added to successfully');
     }, [data?.id]);
 
@@ -31,7 +42,7 @@ const ProductCart = ({ data }) => {
                 <Link href={`/product-detail/${data?.id}`}>
                     <h3 className="text-lg lg:text-xl font-semibold mt-[15px] ">{data?.title}</h3>
                 </Link>
-                <span className="text-sm">{data?.category}</span>
+                <span className="text-sm"> {data?.category ? data?.category.replace('-', ' ') : ''}</span>
                 <div className="flex justify-between items-center">
                     <span className="text-base lg:text-xl font-semibold">{data?.price}$</span>
                     <motion.span

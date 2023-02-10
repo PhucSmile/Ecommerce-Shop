@@ -1,6 +1,9 @@
 import axiosApi from './axiosApi';
 export const cartApi = {
-    get(id) {
+    getCart(id) {
+        return axiosApi.get(`/carts/${id}`);
+    },
+    getCartUser(id) {
         return axiosApi.get(`/carts/user/${id}`);
     },
     add(data) {
