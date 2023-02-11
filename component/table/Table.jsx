@@ -52,7 +52,7 @@ const Table = ({ data, userId }) => {
                 </tr>
             </thead>
             <tbody>
-                {data ? (
+                {data.length ? (
                     data?.map((item) => (
                         <tr key={item.id} className="hover:bg-slate-100">
                             <td className="border w-full">
@@ -99,7 +99,7 @@ const Table = ({ data, userId }) => {
                         </tr>
                     ))
                 ) : (
-                    <tr className="text-center">No item</tr>
+                    <tr className="text-center border text-xl font-medium">No item</tr>
                 )}
             </tbody>
         </table>
