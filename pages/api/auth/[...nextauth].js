@@ -21,6 +21,7 @@ export default NextAuth({
             },
         }),
     ],
+
     // secret: process.env.JWT_SECRET,
 
     callbacks: {
@@ -49,5 +50,9 @@ export default NextAuth({
             // session.expires = new Date(token.accessTokenExpiry).toISOString();
             return session;
         },
+    },
+    pages: {
+        signIn: '/auth/signin',
+        error: '/auth/error',
     },
 });
