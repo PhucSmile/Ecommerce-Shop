@@ -94,9 +94,17 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 999;
     box-shadow: 3px 3px 10px -3px #ddd;
-    background-color: var(--white);
+    background-color: white;
+    animation: slide-down 0.8s;
+}
+
+.sticky__scroll-search {
+    position: sticky;
+    top: 20%;
+    left: 0;
+    z-index: 10;
     animation: slide-down 0.8s;
 }
 
@@ -107,7 +115,7 @@ ul.slick-dots.slick-thumb {
     align-items: center;
     gap: 12px;
     bottom: -20%;
-    height: 80px !important;
+    height: 150px !important;
 }
 
 .slick-dots li {

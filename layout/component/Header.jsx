@@ -28,20 +28,23 @@ export function Header() {
         setQuantity(quantityCart);
     }, [quantityCart]);
 
-    // console.log('currentRoute', currentRoute);
-
-    // window.onScroll = () => {
-    //     setStickyScroll(window.scrollY > 80 ? true : false);
-    //     // clearUp
-    //     return () => window.onScroll(null);
-    // };
+    useEffect(() => {
+        function onScroll() {
+            setStickyScroll(window.scrollY > 69);
+        }
+        onScroll();
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, []);
 
     const menuToggle = () => {
         menuRef.current.classList.toggle('active__nav-link');
     };
 
     return (
-        <header className={`shadow-header ${stickyScroll ? 'sticky-scroll' : ''}`}>
+        <header className={`${stickyScroll ? 'sticky-scroll' : ''}`}>
             <Container>
                 <div className=" flex justify-between items-center py-2 ">
                     {/* logo */}

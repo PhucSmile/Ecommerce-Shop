@@ -60,7 +60,7 @@ const ProfileUser = ({ session }) => {
                                     <span>
                                         <IconLogout />
                                     </span>
-                                    Đăng xuất
+                                    Logout
                                 </div>
                             )}
                         </Menu.Item>

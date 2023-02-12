@@ -27,6 +27,19 @@ const InputSearch = ({
         focusRef.current.focus();
     };
 
+    const handlePopular = (item) => {
+        router.push(
+            {
+                pathname: '/search',
+                query: {
+                    category: item,
+                },
+            },
+            undefined,
+            { shallow: true },
+        );
+    };
+
     const filteredPeople =
         querySearch === ''
             ? renderHistorySearch
@@ -95,13 +108,15 @@ const InputSearch = ({
                         <Combobox.Options className="z-10 absolute mt-3 right-0  left-0 w-full   overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             <div className=" py-[16px] bg-[#f6f6f633]">
                                 <div className="px-4 ">
-                                    <h4 className="text-base text-[#3A3A3A] font-bold">
-                                        Popular result (chưa xử lý sự kiện)
-                                    </h4>
+                                    <h4 className="text-base text-[#3A3A3A] font-bold">Popular result</h4>
 
                                     <div className=" w-full mt-2 mb-[34px] flex items-center gap-2 flex-wrap ">
                                         {dataCategories?.data.slice(0, 6).map((item, index) => (
-                                            <span key={index} className="tags-popular ">
+                                            <span
+                                                key={index}
+                                                className="tags-popular"
+                                                onClick={() => handlePopular(item)}
+                                            >
                                                 #{item}
                                             </span>
                                         ))}

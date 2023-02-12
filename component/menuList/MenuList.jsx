@@ -6,93 +6,83 @@ import SubMenu from '../menu/SubMenu';
 
 const ListMenu = [
     {
-        title: 'Hồ sơ',
+        title: 'Profile',
         icon: '/images/header/profile/1.svg',
         path: '',
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Thông tin cá nhân',
+                title: 'Personal information',
                 icon: '',
                 path: '',
             },
         ],
     },
     {
-        title: 'Danh sách theo dõi',
+        title: 'Whislist',
         icon: '/images/header/profile/2.svg',
         path: '',
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
     },
     {
-        title: 'Thanh toán',
+        title: 'Payment',
         icon: '/images/header/profile/3.svg',
         path: '',
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Lịch sử thanh toán',
+                title: 'History payment',
                 icon: '',
                 path: '/history-payment',
             },
             {
-                title: 'Cài đặt thanh toán',
+                title: 'Setting payment',
                 icon: '',
                 path: '/payment-setting',
             },
         ],
     },
     {
-        title: 'Hỗ trợ',
+        title: 'Help',
         icon: '/images/header/profile/5.svg',
         path: '',
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Câu hỏi phổ biến',
+                title: 'Popular questions',
                 icon: '',
                 path: '/support/FAQ',
             },
             {
-                title: 'Chính sách sử dụng',
+                title: 'Usage Policy',
                 icon: '',
                 path: '/support/usage-policy',
             },
             {
-                title: 'Ticket khiếu nại',
-                icon: '',
-                path: '',
-            },
-            {
-                title: 'Chăm sóc khách hàng',
-                icon: '',
-                path: '',
-            },
-            {
-                title: 'Về chúng tôi',
+                title: 'Feedback',
                 icon: '',
                 path: '',
             },
         ],
     },
     {
-        title: 'Cài đặt',
+        title: 'Settings',
         icon: '/images/header/profile/6.svg',
         path: '',
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Báo lỗi/ góp ý',
+                title: 'Report bugs/suggestions',
                 icon: '',
                 path: '',
             },
             {
-                title: 'Thông báo',
+                title: 'Notification',
                 icon: '',
                 path: '',
             },
