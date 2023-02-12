@@ -1,5 +1,6 @@
 import BestSales from '@/component/bestSales/BestSales';
 import HeroSection from '@/component/heroSection/HeroSection';
+import Jewellery from '@/component/popular/Jewellery';
 import PopularMen from '@/component/popular/PopularMen';
 import PopularWomen from '@/component/popular/PopularWomen';
 import Services from '@/component/services/Services';
@@ -17,6 +18,7 @@ export default function Homepage() {
             <TimeCount />
             <PopularWomen />
             <PopularMen />
+            <Jewellery />
         </>
     );
 }

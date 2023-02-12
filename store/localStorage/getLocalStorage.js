@@ -38,7 +38,7 @@ export const fetchTotalQuantityLocal = () => {
         if (result) {
             return JSON.parse(localStorage.getItem('totalQuantity'));
         } else {
-            return [];
+            return 0;
         }
     }
 };
@@ -47,6 +47,17 @@ export const fetchTotalAmountLocal = () => {
         let result = localStorage.getItem('totalAmount');
         if (result) {
             return JSON.parse(localStorage.getItem('totalAmount'));
+        } else {
+            return 0;
+        }
+    }
+};
+// cartCheckout
+export const fetchCartCheckoutLocal = () => {
+    if (typeof window !== 'undefined') {
+        let result = localStorage.getItem('cartCheckout');
+        if (result) {
+            return JSON.parse(localStorage.getItem('cartCheckout'));
         } else {
             return [];
         }

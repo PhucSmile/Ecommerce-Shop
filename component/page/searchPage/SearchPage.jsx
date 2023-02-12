@@ -11,6 +11,12 @@ import { useSelector } from 'react-redux';
 import ProductCart from '@/component/product/ProductCart';
 import NavSearchMobile from '@/component/navSearchMobile/NavSearchMobile';
 import Image from 'next/image';
+import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
+
+const path = {
+    pathOne: 'home',
+    pathTwo: 'search',
+};
 
 const listSortPrice = ['Sort', 'Reverse'];
 const SearchPage = () => {
@@ -182,6 +188,7 @@ const SearchPage = () => {
 
     return (
         <Container>
+            <Breadcrumb path={path} />
             {/* nav search Mobile */}
             <NavSearchMobile
                 dataCategories={dataCategories?.data}

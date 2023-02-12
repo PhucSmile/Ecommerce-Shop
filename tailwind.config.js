@@ -37,6 +37,9 @@ module.exports = {
                 checkbox: ['0px 5px 10px rgba(0, 0, 0, 0.1)'],
                 header: ['0px 8px 10px rgba(0, 0, 0, 0.1)'],
                 detail: ['0px 2px 1px rgba(0, 0, 0, 0.1)'],
+                cartItem: [
+                    ' 0px 9px 27px rgba(0, 0, 0, 0.07), 0px 3.75998px 11.28px rgba(0, 0, 0, 0.0503198), 0px 2.01027px 6.0308px rgba(0, 0, 0, 0.0417275), 0px 1.12694px 3.38082px rgba(0, 0, 0, 0.035), 0px 0.598509px 1.79553px rgba(0, 0, 0, 0.0282725), 0px 0.249053px 0.747159px rgba(0, 0, 0, 0.0196802)',
+                ],
                 login: [
                     '0px 9px 27px rgba(0, 0, 0, 0.07), 0px 3.75998px 11.28px rgba(0, 0, 0, 0.0503198), 0px 2.01027px 6.0308px rgba(0, 0, 0, 0.0417275), 0px 1.12694px 3.38082px rgba(0, 0, 0, 0.035), 0px 0.598509px 1.79553px rgba(0, 0, 0, 0.0282725), 0px 0.249053px 0.747159px rgba(0, 0, 0, 0.0196802)',
                 ],

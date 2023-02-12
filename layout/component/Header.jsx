@@ -44,7 +44,7 @@ export function Header() {
     };
 
     return (
-        <header className={`${stickyScroll ? 'sticky-scroll' : ''}`}>
+        <header className={`shadow-header ${stickyScroll ? 'sticky-scroll' : ''}`}>
             <Container>
                 <div className=" flex justify-between items-center py-2 ">
                     {/* logo */}

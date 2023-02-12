@@ -12,6 +12,12 @@ import Related from '@/component/related/Related';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/slice/useCart';
 import { toast } from 'react-toastify';
+import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
+
+const path = {
+    pathOne: 'home',
+    pathTwo: 'product detail',
+};
 
 const DetailSection = ({ data }) => {
     const dispatch = useDispatch();
@@ -58,6 +64,9 @@ const DetailSection = ({ data }) => {
     };
     return (
         <Helmet title="Detail">
+            <Container>
+                <Breadcrumb path={path} />
+            </Container>
             <CommonSection
                 title={data?.category ? data?.category.replace('-', ' ') : ''}
                 image={'/images/common/common.png'}

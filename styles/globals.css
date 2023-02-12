@@ -77,9 +77,6 @@
 .tags-popular {
     @apply flex items-center justify-center bg-[#F6F6F6] rounded-lg text-sm lg:text-base px-1 md:px-2 lg:px-5 py-1 md:py-2 gap-[6px] cursor-pointer;
 }
-.table {
-    @apply table-fixed border-collapse border border-spacing-1 border-slate-400 w-full;
-}
 
 td {
     text-align: -webkit-center;

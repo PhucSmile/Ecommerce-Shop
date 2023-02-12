@@ -19,3 +19,7 @@ export const setTotalQuantityInLocal = (data) => {
 export const setTotalAmountInLocal = (data) => {
     localStorage.setItem('totalAmount', JSON.stringify(data));
 };
+// cartCheckout
+export const setCartCheckout = (data) => {
+    localStorage.setItem('cartCheckout', JSON.stringify(data));
+};

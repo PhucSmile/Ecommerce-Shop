@@ -1,15 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCartLocal, fetchTotalAmountLocal, fetchTotalQuantityLocal } from '../localStorage/getLocalStorage';
-import { setCartInLocal, setTotalAmountInLocal, setTotalQuantityInLocal } from '../localStorage/setLocalStorage';
-
-// cartItems
-// totalQuantity
-// totalAmount
+import {
+    fetchCartCheckoutLocal,
+    fetchCartLocal,
+    fetchTotalAmountLocal,
+    fetchTotalQuantityLocal,
+} from '../localStorage/getLocalStorage';
+import {
+    setCartCheckout,
+    setCartInLocal,
+    setTotalAmountInLocal,
+    setTotalQuantityInLocal,
+} from '../localStorage/setLocalStorage';
 
 const initialState = {
     cartItems: fetchCartLocal(),
     totalQuantity: fetchTotalQuantityLocal(),
     totalAmount: fetchTotalAmountLocal(),
+    dataCartItems: fetchCartCheckoutLocal(),
 };
 
 export const useCart = createSlice({
@@ -88,13 +95,20 @@ export const useCart = createSlice({
             setTotalQuantityInLocal(state.totalQuantity);
             setTotalAmountInLocal(state.totalAmount);
         },
+
+        // SAVE CART CHECKOUT
+        cartCheckout(state, action) {
+            state.dataCartItems = action.payload;
+            setCartCheckout(state.dataCartItems);
+        },
     },
 });
 
 // Action creators are generated for each case reducer function
 
-export const { addToCart, removeCart, deleteCart } = useCart.actions;
+export const { addToCart, removeCart, deleteCart, cartCheckout } = useCart.actions;
 export const getAllCarts = (state) => state.cart.cartItems;
 export const getTotalQuantity = (state) => state.cart.totalQuantity;
 export const getTotalAmount = (state) => state.cart.totalAmount;
+export const getDataCartItems = (state) => state.cart.dataCartItems;
 export default useCart;
