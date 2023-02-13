@@ -13,9 +13,9 @@ const ListMenu = [
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Personal information',
+                title: 'User information',
                 icon: '',
-                path: '',
+                path: '/profile',
             },
         ],
     },

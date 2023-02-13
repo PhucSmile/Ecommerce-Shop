@@ -52,7 +52,7 @@ const CartPage = () => {
             await useAddCartApiMutate.mutate(newData, {
                 onSuccess: async (res) => {
                     console.log('res', res);
-                    await dispatch(cartCheckout(res));
+                    await dispatch(cartCheckout(res.data));
                     router.push('/cart/checkout');
                 },
             });

@@ -377,3 +377,14 @@ export const IconMinus = ({ className }) => {
         </svg>
     );
 };
+
+export const IconArrowRight = ({ className }) => {
+    return (
+        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1.70492 0.5L0.294922 1.91L4.87492 6.5L0.294922 11.09L1.70492 12.5L7.70492 6.5L1.70492 0.5Z"
+                fill="black"
+            />
+        </svg>
+    );
+};

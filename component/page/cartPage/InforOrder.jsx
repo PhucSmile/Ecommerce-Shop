@@ -1,7 +1,10 @@
+import { IconArrowRight, IconPlus } from '@/assets/svg';
 import { formatPrice } from '@/component/utils/helpers';
 import React from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
-const InforOrder = ({ totalQuantityCart, totalAmountCart, handleCheckout = () => {} }) => {
+const InforOrder = ({ totalQuantityCart, totalAmountCart, discountedTotal, handleCheckout = () => {} }) => {
     return (
         <div className=" shadow-cartItem rounded-lg p-6">
             <div className="flex justify-between items-center mb-[18px]">
@@ -20,7 +23,9 @@ const InforOrder = ({ totalQuantityCart, totalAmountCart, handleCheckout = () =>
                     <span className="text-[14px]  text-text ">Ecommerce@gmail.com</span>
                 </div>
 
-                <img src="images/svg/icon-arrow-right.svg" className="cursor-pointer" />
+                <span>
+                    <IconArrowRight />
+                </span>
             </div>
 
             <div className="mx-[7px]">
@@ -33,13 +38,38 @@ const InforOrder = ({ totalQuantityCart, totalAmountCart, handleCheckout = () =>
                     <span className="text-[14px]">Provisional</span>
                     <span className="text-xl font-medium">{formatPrice(totalAmountCart)}</span>
                 </div>
-                <div className="flex justify-between items-center mb-5">
-                    <span className="text-[14px]">Total (4)</span>
-                    <span className="text-xl font-bold">{formatPrice(totalAmountCart)}</span>
-                </div>
-                <button className="btn-primary w-full" onClick={handleCheckout}>
-                    Buy ({totalQuantityCart})
-                </button>
+                {!discountedTotal ? (
+                    <div className="flex justify-between items-center mb-5">
+                        <span className="text-[14px]">Total (4)</span>
+                        <span className="text-xl font-bold">{formatPrice(totalAmountCart)}</span>
+                    </div>
+                ) : (
+                    <div className="flex justify-between items-center mb-5">
+                        <span className="text-[14px]">Discounted Total </span>
+                        <span className="text-xl font-bold">{formatPrice(discountedTotal)}</span>
+                    </div>
+                )}
+                {!discountedTotal ? (
+                    <button className="btn-primary w-full" onClick={handleCheckout}>
+                        Checkout ({totalQuantityCart})
+                    </button>
+                ) : (
+                    <>
+                        <button type="submit" className="btn-primary w-full">
+                            Buy
+                        </button>
+                        <Link href={'#'} className="flex items-center justify-center space-x-2 mt-4 ">
+                            <motion.span
+                                whileTap={{ scale: 1.2 }}
+                                className="block  h-4 w-4 lg:h6 lg:w-6 mb-[5px] "
+                                onClick={() => handleAddItem(data)}
+                            >
+                                <IconPlus />
+                            </motion.span>
+                            Add a payment account
+                        </Link>
+                    </>
+                )}
             </div>
         </div>
     );

@@ -7,11 +7,9 @@ import { useDispatch } from 'react-redux';
 import { addToCart, deleteCart, removeCart } from '@/store/slice/useCart';
 import Link from 'next/link';
 const TableItem = ({ data }) => {
-    console.log('data', data);
     const dispatch = useDispatch();
 
     const handleAddItem = async (data) => {
-        console.log('id cart', data);
         await dispatch(
             addToCart({
                 id: data.id,
