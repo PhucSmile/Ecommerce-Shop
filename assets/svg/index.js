@@ -262,7 +262,7 @@ export const IconArrowDown = () => {
         <svg width={11} height={8} viewBox="0 0 11 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M1 1.75L5.5 6.25L10 1.75"
-                stroke="#212121"
+                stroke="#FF6C00"
                 strokeWidth={2}
                 strokeLinecap="round"
                 strokeLinejoin="round"

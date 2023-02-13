@@ -7,13 +7,14 @@ module.exports = {
                 xl: ['3px 3px 0px #F6F6F6', '3px 3px 0px #99CCCC'],
             },
             colors: {
-                primary: '#0A1D37',
+                primary: '#202020',
                 secondary: '#BE8184',
                 third: '#C97E83',
                 text: '#999999',
                 text_footer: '#ffffffbb',
                 grey_deselect: '#7A7B7A',
                 danger: '#df2020',
+                Orange: '#FF6C00',
                 hero_bg: '#d6e5fb',
             },
             fontFamily: {

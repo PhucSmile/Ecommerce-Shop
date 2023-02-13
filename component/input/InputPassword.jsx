@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 
-const InputPassword = ({ register, defaultValue, errors, label, name, notication, isErr }) => {
+const InputPassword = ({
+    register,
+    defaultValue,
+    placeholder = 'Password',
+    errors,
+    label,
+    name,
+    notication,
+    isErr,
+}) => {
     const [open, setOpen] = useState(false);
 
     // handle toggle
@@ -18,6 +27,7 @@ const InputPassword = ({ register, defaultValue, errors, label, name, notication
                         id={name}
                         name={name}
                         value={defaultValue}
+                        placeholder={placeholder}
                         type={open === false ? 'password' : 'text'}
                         className={`block bg-[#F3F4F9] w-full pl-[10px] pr-10 py-[11px] border focus:outline-none  sm:text-sm rounded-md ${
                             isErr ? 'border-red-300' : 'border-[#F3F4F9]'

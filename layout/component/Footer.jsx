@@ -54,7 +54,7 @@ const ListContact = [
 export function Footer() {
     const year = new Date().getFullYear();
     return (
-        <footer className="bg-primary pt-[40px] lg:pt-[60px] pb-5 lg:pb-[30px]">
+        <footer className="bg-[#202020] pt-[40px] lg:pt-[60px] pb-5 lg:pb-[30px]">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-text_footer">
                     <div className="lg:col-span-2  w-full ">

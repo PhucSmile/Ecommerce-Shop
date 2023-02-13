@@ -20,8 +20,8 @@ const TimeCount = () => {
                             <Clock />
                             <Link href={`/product-detail/${data?.data.id}`}>
                                 <motion.button
-                                    whileHover={{ scale: 1.2 }}
-                                    className="btn-outline mt-10 hover:bg-[#202020]"
+                                    whileHover={{ scale: 1.1 }}
+                                    className="btn-outline text-white bg-[#202020] border-white mt-10 hover:bg-white hover:text-[#202020] hover:border-[#202020]"
                                 >
                                     Visit Store
                                 </motion.button>

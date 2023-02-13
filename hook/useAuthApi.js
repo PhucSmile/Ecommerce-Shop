@@ -5,9 +5,10 @@ export const useAuthRegisterApi = () => {
     return useMutation(authApi.register);
 };
 
-export const useAuth = ({ id, status }) => {
+export const useAuth = (id) => {
     return useQuery({
         queryKey: [`get-profile-user-login`],
-        queryFn: () => (status = 'authenticated' ? authApi.getUserLogin(id) : null),
+        queryFn: () => authApi.getUserLogin(id),
+        enabled: !!id,
     });
 };
