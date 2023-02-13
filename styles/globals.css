@@ -128,6 +128,13 @@ li.slick-active {
     scale: 1;
 }
 
+.product__cart-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
 @media only screen and (max-width: 576px) {
     ul.slick-dots.slick-thumb {
         bottom: -30% !important;

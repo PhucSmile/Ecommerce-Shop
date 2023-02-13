@@ -24,8 +24,8 @@ const ProductCart = ({ data }) => {
     }, [data?.id]);
 
     return (
-        <div className="shadow">
-            <Link href={`/product-detail/${data?.id}`}>
+        <div className="shadow flex flex-col ">
+            <Link href={`/product-detail/${data?.id}`} className="shrink-0">
                 <motion.div whileHover={{ scale: 0.9 }} className="relative w-full h-[300px] md:h-[220px] ">
                     <Image
                         src={data?.images[0]}
@@ -38,12 +38,16 @@ const ProductCart = ({ data }) => {
                     />
                 </motion.div>
             </Link>
-            <div className="p-2">
-                <Link href={`/product-detail/${data?.id}`}>
-                    <h3 className="text-lg lg:text-xl font-semibold mt-[15px] ">{data?.title}</h3>
-                </Link>
-                <span className="text-sm"> {data?.category ? data?.category.replace('-', ' ') : ''}</span>
-                <div className="flex justify-between items-center">
+            <div className="p-2 flex flex-col flex-1">
+                <div>
+                    <Link href={`/product-detail/${data?.id}`}>
+                        <h3 className="product__cart-title  text-lg lg:text-xl font-semibold mt-[15px] h-[56px] ">
+                            {data?.title}
+                        </h3>
+                    </Link>
+                    <span className="text-sm"> {data?.category ? data?.category.replace('-', ' ') : ''}</span>
+                </div>
+                <div className="flex justify-between items-center mt-auto">
                     <span className="text-base lg:text-xl font-semibold">{data?.price}$</span>
                     <motion.span
                         whileTap={{ scale: 1.2 }}
