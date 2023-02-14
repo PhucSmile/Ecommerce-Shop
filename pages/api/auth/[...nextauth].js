@@ -22,7 +22,13 @@ export default NextAuth({
         }),
     ],
 
-    // secret: process.env.JWT_SECRET,
+    secret: process.env.NEXT_PUBLIC_SECRET,
+    jwt: {
+        token: process.env.NEXT_PUBLIC_SECRET,
+        // The maximum age of the NextAuth.js issued JWT in seconds.
+        // Defaults to `session.maxAge`.
+        maxAge: 60 * 60 * 24 * 30,
+    },
 
     callbacks: {
         async jwt({ token, user, account }) {
@@ -53,6 +59,5 @@ export default NextAuth({
     },
     pages: {
         signIn: '/auth/signin',
-        error: '/auth/error',
     },
 });
