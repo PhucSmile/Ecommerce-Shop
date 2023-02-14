@@ -32,13 +32,12 @@ export default NextAuth({
 
     callbacks: {
         async jwt({ token, user, account }) {
-            // console.log('account', account);
+            console.log('account', account);
             console.log('token', token);
             console.log('user', user);
             try {
-                if (user) {
-                    token.accessToken = token.accessToken;
-                    token.accessTokenExpiry = user.expiresIn;
+                if (account) {
+                    token.accessToken = token.access_token;
                     token.user = user;
                 }
 
