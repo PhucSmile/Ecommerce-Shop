@@ -12,3 +12,9 @@ export const useAuth = (id) => {
         enabled: !!id,
     });
 };
+
+export const useEditProfileApi = (id) => {
+    return useMutation((data) => {
+        return Promise.all([authApi.edit(id, data)]);
+    });
+};

@@ -48,13 +48,17 @@
 }
 @layer components {
     .btn-primary {
-        @apply tracking-[2px] font-bold border-[1px] border-solid border-Orange hover:border-Orange text-white bg-Orange px-6 py-2 outline-none rounded-md hover:text-Orange hover:bg-white hover:font-bold ease-in-out duration-300 drop-shadow-2xl;
+        @apply tracking-[2px] text-sm font-bold border-[1px] border-solid rounded-2xl border-Orange hover:border-Orange text-white bg-Orange px-[16px] py-[10px] outline-none  hover:text-Orange hover:bg-white hover:font-bold ease-in-out duration-300 drop-shadow-2xl;
     }
     .btn-secondary {
         @apply btn-primary text-black;
     }
     .btn-outline {
-        @apply btn-primary text-Orange bg-white hover:bg-Orange hover:text-white border-Orange hover:border-white;
+        @apply btn-primary  py-[12px]   text-Orange  bg-white  border-Orange hover:bg-Orange hover:text-white;
+    }
+
+    .btn-add-payment {
+        @apply border border-dashed rounded-lg border-[#B4B9B9] w-full py-4 text-xl text-[#212B36] bg-[#FAEFE6];
     }
 }
 

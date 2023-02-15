@@ -41,7 +41,7 @@ const ListMenu = [
             {
                 title: 'Setting payment',
                 icon: '',
-                path: '/payment-setting',
+                path: '/payment/payment-setting',
             },
         ],
     },

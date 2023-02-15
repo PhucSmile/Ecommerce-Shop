@@ -2,16 +2,26 @@ import { Fragment, useState } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 
-const Select = ({ data, title, selected, setSelected }) => {
+const Select = ({ data, title, selected, setSelected, isPageProfile = false }) => {
     return (
         <div className="mb-4">
             <span className="text-sm font-semibold mb-2">{title}</span>
             <Listbox value={selected} onChange={setSelected}>
                 <div className="relative mt-1">
-                    <Listbox.Button className="relative w-full cursor-default rounded-lg bg-gray-50 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                    <Listbox.Button
+                        className={`${
+                            isPageProfile ? 'py-3 bg-[#f3f4f9]' : 'py-2 bg-gray-50 shadow-md'
+                        } relative w-full cursor-default rounded-lg    pl-3 pr-10 text-left  focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm`}
+                    >
                         <span className="block truncate">{selected}</span>
-                        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                            <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 ">
+                            {isPageProfile ? (
+                                <div className="w-[30px] h-[30px] ">
+                                    <img src={'/images/svg/arrow_down.svg'} alt="" />
+                                </div>
+                            ) : (
+                                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                            )}
                         </span>
                     </Listbox.Button>
                     <Transition

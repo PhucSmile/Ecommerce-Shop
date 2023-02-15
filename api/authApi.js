@@ -9,4 +9,7 @@ export const authApi = {
     getUserLogin(id) {
         return axiosApi.get(`/users/${id}`);
     },
+    edit(id, data) {
+        return axiosApi.put(`/users/${id}`, data);
+    },
 };
