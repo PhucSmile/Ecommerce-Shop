@@ -1,4 +1,4 @@
-import { productApi } from '@/api/productApi';
+import { productApi } from '@/apiClient/productApi';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useProductApi = () => {

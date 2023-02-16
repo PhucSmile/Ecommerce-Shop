@@ -1,4 +1,4 @@
-import { categoryApi } from '@/api/categoryApi';
+import { categoryApi } from '@/apiClient/categoryApi';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useCategoryApi = ({ params, options }) => {

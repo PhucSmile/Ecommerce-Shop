@@ -1,4 +1,4 @@
-import { cartApi } from '@/api/cartApi';
+import { cartApi } from '@/apiClient/cartApi';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const useGetCartApi = (id) => {

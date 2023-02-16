@@ -1,4 +1,4 @@
-import { authApi } from '@/api/authApi';
+import { authApi } from '@/apiClient/authApi';
 import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useAuthRegisterApi = () => {
