@@ -19,13 +19,7 @@ const ListMenu = [
             },
         ],
     },
-    {
-        title: 'Whislist',
-        icon: '/images/header/profile/2.svg',
-        path: '',
-        iconOpen: <HiChevronDown />,
-        iconClose: <HiChevronRight />,
-    },
+
     {
         title: 'Payment',
         icon: '/images/header/profile/3.svg',
@@ -36,7 +30,7 @@ const ListMenu = [
             {
                 title: 'History payment',
                 icon: '',
-                path: '/history-payment',
+                path: '',
             },
             {
                 title: 'Setting payment',

@@ -9,7 +9,7 @@ const HeroProduct = ({ data }) => {
     return (
         <Container>
             <section>
-                <div className="grid grid-cols-1 space-y-2 md:grid-cols-2  ">
+                <div className="grid grid-cols-1 space-y-4 md:grid-cols-2">
                     <div className="m-auto">
                         <h3 className="font-medium">Trending product in 2023</h3>
                         <Link href={`/product-detail/${data.id}`}>
@@ -23,7 +23,7 @@ const HeroProduct = ({ data }) => {
                         </Link>
                     </div>
                     <div className="px-3">
-                        <div className="relative w-[636p] h-[480px] cursor-pointer">
+                        <div className="relative  h-[280px] w-full lg:h-[480px] cursor-pointer">
                             <Image
                                 src={data?.images[0]}
                                 layout="fill"

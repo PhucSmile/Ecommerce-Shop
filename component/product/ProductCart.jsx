@@ -7,6 +7,7 @@ import { IconAdd } from '@/assets/svg';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/slice/useCart';
+import { formatPrice } from '../utils/helpers';
 
 const ProductCart = ({ data }) => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const ProductCart = ({ data }) => {
     return (
         <div className="shadow flex flex-col ">
             <Link href={`/product-detail/${data?.id}`} className="shrink-0">
-                <motion.div whileHover={{ scale: 0.9 }} className="relative w-full h-[300px] md:h-[220px] ">
+                <motion.div whileHover={{ scale: 0.9 }} className="relative w-full h-[150px] md:h-[220px] ">
                     <Image
                         src={data?.images[0]}
                         layout="fill"
@@ -41,14 +42,14 @@ const ProductCart = ({ data }) => {
             <div className="p-2 flex flex-col flex-1">
                 <div>
                     <Link href={`/product-detail/${data?.id}`}>
-                        <h3 className="product__cart-title  text-lg lg:text-xl font-semibold mt-[15px] h-[56px] ">
+                        <h3 className="product__cart-title  text-base lg:text-xl font-semibold mt-[15px] h-[48px] lg:h-[56px] ">
                             {data?.title}
                         </h3>
                     </Link>
                     <span className="text-sm"> {data?.category ? data?.category.replace('-', ' ') : ''}</span>
                 </div>
                 <div className="flex justify-between items-center mt-auto">
-                    <span className="text-base lg:text-xl font-semibold">{data?.price}$</span>
+                    <span className="text-base lg:text-xl font-semibold">{formatPrice(data?.price)}</span>
                     <motion.span
                         whileTap={{ scale: 1.2 }}
                         className="w-[30px] h-[30px] cursor-pointer"

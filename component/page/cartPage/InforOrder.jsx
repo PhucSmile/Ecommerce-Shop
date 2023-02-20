@@ -50,24 +50,28 @@ const InforOrder = ({ totalQuantityCart, totalAmountCart, discountedTotal, handl
                     </div>
                 )}
                 {!discountedTotal ? (
-                    <button className="btn-primary w-full" onClick={handleCheckout}>
-                        Checkout ({totalQuantityCart})
-                    </button>
+                    <div className="flex justify-center">
+                        <button className="btn-primary  w-[60%] lg:w-full" onClick={handleCheckout}>
+                            Checkout ({totalQuantityCart})
+                        </button>
+                    </div>
                 ) : (
                     <>
-                        <button type="submit" className="btn-primary w-full">
-                            Buy
-                        </button>
-                        <Link href={'#'} className="flex items-center justify-center space-x-2 mt-4 ">
-                            <motion.span
-                                whileTap={{ scale: 1.2 }}
-                                className="block  h-4 w-4 lg:h6 lg:w-6 mb-[5px] "
-                                onClick={() => handleAddItem(data)}
-                            >
-                                <IconPlus />
-                            </motion.span>
-                            Add a payment account
-                        </Link>
+                        <div className="flex flex-col justify-center items-center gap-4">
+                            <button type="submit" className="btn-primary w-[60%] lg:w-full">
+                                Buy
+                            </button>
+                            <Link href={'#'} className="flex items-center justify-center space-x-2 mt-4 ">
+                                <motion.span
+                                    whileTap={{ scale: 1.2 }}
+                                    className="block  h-4 w-4 lg:h6 lg:w-6 mb-[5px] "
+                                    onClick={() => handleAddItem(data)}
+                                >
+                                    <IconPlus />
+                                </motion.span>
+                                Add a payment account
+                            </Link>
+                        </div>
                     </>
                 )}
             </div>

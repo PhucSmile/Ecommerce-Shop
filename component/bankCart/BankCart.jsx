@@ -7,7 +7,7 @@ const BankCart = ({ data, defaultBtn, onDelete = () => {}, onDefaul = () => {} }
         <div className="flex justify-between items-center rounded-3xl shadow ">
             <div className="flex items-center">
                 <div className="relative h-[52px] w-[67px] m-[23px]">
-                    <Image src="/images/payment/ACB.png" layout="fill" objectFit="contain" />
+                    <Image src="/images/payment/ACB.png" priority layout="fill" objectFit="cover" alt="" />
                 </div>
                 <div className="border-l-[1px] border-solid border-[#DBDCDC pl-[10px]">
                     <h4 className="text-xl font-bold">Bank {data?.cardType} </h4>

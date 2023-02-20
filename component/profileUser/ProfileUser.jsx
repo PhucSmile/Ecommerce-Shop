@@ -11,9 +11,7 @@ const ProfileUser = ({ session }) => {
         <Menu as="div" className="relative inline-block text-left">
             <div>
                 <Menu.Button
-                    className={`${
-                        session ? 'border-Orange' : null
-                    } inline-flex w-full justify-center rounded-md border-[1px] border-solid  bg-white  p-1 md:p-2 text-sm font-medium text-Orange hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                    className={` inline-flex w-full justify-center rounded-md   p-1 md:p-2 text-sm font-medium text-Orange hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
                 >
                     {session ? (
                         <div className="flex items-center gap-1 md:gap-2">

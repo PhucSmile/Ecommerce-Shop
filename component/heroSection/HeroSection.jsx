@@ -22,7 +22,7 @@ const HeroSection = () => {
     };
 
     return (
-        <div>
+        <div className="overflow-hidden">
             {data?.data && (
                 <Slider {...settings}>
                     {data?.data?.products?.map((item) => (

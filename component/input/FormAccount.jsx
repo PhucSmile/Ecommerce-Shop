@@ -218,11 +218,11 @@ const FormAccount = ({ data }) => {
                 </div>
 
                 <div className="w-full  my-4 text-base lg:text-lg">
-                    <div className="w-full flex flex-col lg:flex-row gap-4 justify-end items-center lg:mr-10">
+                    <div className="w-full  flex  flex-col md:flex-row gap-4 justify-center lg:justify-end items-center lg:mr-10">
                         <button
                             type=""
                             onClick={(e) => e.preventDefault()}
-                            className="bg-white text-[#FF6C00] border-[#FD974B] border rounded-2xl px-20 py-2 opacity-50 mr-10"
+                            className="btn-primary px-10 lg:px-20 py-2 min-w-[140px]"
                         >
                             Cancel
                         </button>
@@ -230,7 +230,7 @@ const FormAccount = ({ data }) => {
                         <button
                             type="submit"
                             disabled={!errors === null}
-                            className={`bg-[#FF6C00] text-white rounded-2xl px-20 py-2 opacity-50 mr-10  `}
+                            className={`btn-primary px-10 lg:px-20 py-2 min-w-[140px] opacity-50`}
                         >
                             Save
                         </button>

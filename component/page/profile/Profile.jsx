@@ -40,7 +40,7 @@ const Profile = () => {
                         </div>
                     </div>
                 </div>
-                <Container className="-mt-32 w-full relative z-10 pb-32">
+                <Container className="-mt-32 w-full relative pb-32">
                     <div className="w-full grid grid-cols-3 gap-x-8">
                         <div className="hidden lg:block lg:col-span-1">
                             <InforAccount data={dataProfile?.data} />

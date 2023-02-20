@@ -35,9 +35,8 @@ const Services = () => {
             <section className="mt-6 lg:mt-0">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 ">
                     {serviceData.map((item, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            whileHover={{ scale: 1.1 }}
                             className="flex items-center gap-5 p-5 rounded "
                             style={{ backgroundColor: `${item.bg}` }}
                         >
@@ -48,7 +47,7 @@ const Services = () => {
                                 <h3 className="text-lg font-semibold">{item.title}</h3>
                                 <p className="text-sm">{item.subtitle}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </section>

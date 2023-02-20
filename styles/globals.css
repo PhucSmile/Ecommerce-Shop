@@ -48,7 +48,7 @@
 }
 @layer components {
     .btn-primary {
-        @apply tracking-[2px] text-sm font-bold border-[1px] border-solid rounded-2xl border-Orange hover:border-Orange text-white bg-Orange px-[16px] py-[10px] outline-none  hover:text-Orange hover:bg-white hover:font-bold ease-in-out duration-300 drop-shadow-2xl;
+        @apply tracking-[2px] text-sm font-bold border-[1px] border-solid rounded-2xl border-Orange hover:border-Orange text-white bg-Orange px-[10px] lg:px-[16px] py-[6px] lg:py-[10px] outline-none  hover:text-Orange hover:bg-white hover:font-bold ease-in-out duration-300 drop-shadow-2xl;
     }
     .btn-secondary {
         @apply btn-primary text-black;
@@ -139,6 +139,7 @@ li.slick-active {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+
 @media only screen and (max-width: 576px) {
     ul.slick-dots.slick-thumb {
         bottom: -30% !important;

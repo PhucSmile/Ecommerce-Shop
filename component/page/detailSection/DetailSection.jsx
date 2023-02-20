@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '@/store/slice/useCart';
 import { toast } from 'react-toastify';
 import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
+import { formatPrice } from '@/component/utils/helpers';
 
 const path = {
     pathOne: 'home',
@@ -106,7 +107,7 @@ const DetailSection = ({ data }) => {
                             </div>
                         </div>
                         <div className="flex  items-center gap-10 my-4">
-                            <span className="text-xl font-semibold">{data?.price}$</span>
+                            <span className="text-xl font-semibold">{formatPrice(data?.price)}</span>
                             <div className="flex flex-col  gap-1">
                                 <span className="font-normal">
                                     Brand: <span className="uppercase">{data?.brand}</span>

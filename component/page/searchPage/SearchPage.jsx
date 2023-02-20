@@ -233,7 +233,7 @@ const SearchPage = () => {
 
                 {/* right */}
                 <div className="col-span-3 lg:col-span-2  w-full ">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
                         {selectedPrice === 'Sort'
                             ? dataSearch
                                   ?.concat()

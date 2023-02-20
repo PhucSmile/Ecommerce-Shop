@@ -19,6 +19,10 @@ const ListCategories = [
 
 const ListLinks = [
     {
+        name: 'Home',
+        url: '/',
+    },
+    {
         name: 'Search',
         url: '/search',
     },
@@ -27,12 +31,12 @@ const ListLinks = [
         url: '/cart',
     },
     {
-        name: 'Login',
-        url: '/login',
+        name: 'Profile',
+        url: '/profile',
     },
     {
-        name: 'Register',
-        url: '/register',
+        name: 'Login',
+        url: '/Login',
     },
 ];
 
@@ -54,7 +58,7 @@ const ListContact = [
 export function Footer() {
     const year = new Date().getFullYear();
     return (
-        <footer className="bg-[#202020] pt-[40px] lg:pt-[60px] pb-5 lg:pb-[30px]">
+        <footer className="bg-[#202020] pt-[40px] lg:pt-[60px] pb-5 lg:pb-[30px] mb-[99.5px]">
             <Container>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-text_footer">
                     <div className="lg:col-span-2  w-full ">
@@ -77,9 +81,10 @@ export function Footer() {
                     </div>
                     <div className=" w-full text-text_footer">
                         <h3 className="text-lg lg:text-xl  text-white font-semibold mb-4">UseFul Links</h3>
+
                         {ListLinks.map((item, index) => (
                             <Link key={index} href={item.url}>
-                                <p className="text-sm lg:text-base py-2">{item.name}</p>
+                                <p className=" text-sm lg:text-base py-2">{item.name}</p>
                             </Link>
                         ))}
                     </div>

@@ -93,12 +93,12 @@ const SignIn = () => {
             <button type="submit" className="btn-primary">
                 Submit
             </button>
-            <p className="text-center mt-4 ">
+            {/* <p className="text-center mt-4 ">
                 {"Don't have an account ?."}
                 <Link href={'/register'} className="font-extrabold hover:text-grey_deselect">
                     Create an account
                 </Link>
-            </p>
+            </p> */}
         </form>
     );
 };

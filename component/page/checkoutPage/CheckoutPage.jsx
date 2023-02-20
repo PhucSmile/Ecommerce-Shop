@@ -62,7 +62,7 @@ const CheckoutPage = () => {
                 <Container>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="grid grid-cols-12 gap-4">
-                            <div className="col-span-12 lg:col-span-9">
+                            <div className="col-span-12 md:col-span-8 ">
                                 <div className="lg:w-[80%]">
                                     <InputLabel
                                         label="User Name"
@@ -111,7 +111,7 @@ const CheckoutPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-span-12 md:col-span-5 lg:col-span-3 mt-6 lg:mt-0">
+                            <div className="col-span-12 md:col-span-4  mt-6 lg:mt-0">
                                 <InforOrder
                                     totalQuantityCart={dataCart?.totalQuantity}
                                     totalAmountCart={dataCart?.total}
