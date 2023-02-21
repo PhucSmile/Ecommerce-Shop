@@ -12,22 +12,22 @@ const listTabs = [
     {
         title: 'Home',
         href: '/',
-        icon: <IconHome className="w-6 h-6 lg:w-8 lg:h-8" />,
+        icon: <IconHome className="w-6 h-6 " />,
     },
     {
         title: 'Search',
         href: '/search',
-        icon: <IconSearch className="w-6 h-6 lg:w-8 lg:h-8" />,
+        icon: <IconSearch className="w-6 h-6 " />,
     },
     {
         title: 'Cart',
         href: '/cart',
-        icon: <IconCart className="w-6 h-6 lg:w-8 lg:h-8" />,
+        icon: <IconCart className="w-6 h-6 " />,
     },
     {
         title: 'Profile',
         href: '/profile',
-        icon: <IconUserNav className="w-6 h-6 lg:w-8 lg:h-8" />,
+        icon: <IconUserNav className="w-6 h-6 " />,
     },
 ];
 
@@ -35,9 +35,9 @@ export default function TabsBottom() {
     const router = useRouter();
     console.log('router', router.pathname);
     return (
-        <div className=" bg-white shadow-paymentSetting  pb-0 sm:pb-[16px] w-full  sm:static   md:px-[15px] sm:px-0 z-50">
+        <div className=" bg-[#ffffffcc] shadow-paymentSetting  pb-0 sm:pb-[10px] w-full  sm:static   md:px-[15px] sm:px-0 z-50">
             <Container>
-                <div className="list-bottom flex justify-between bg-white md:px-5">
+                <div className="list-bottom flex justify-between  md:px-5">
                     {listTabs.map((item, index) => (
                         <Link key={index} href={item.href}>
                             <div
@@ -49,7 +49,7 @@ export default function TabsBottom() {
                                 )}
                             >
                                 <span>{item.icon}</span>
-                                <p className={`hover:font-bold mt-[10px] text-center text-sm md:text-base `}>
+                                <p className={`hover:font-bold mt-[4px] text-center text-sm md:text-base `}>
                                     {item.title}
                                 </p>
                             </div>

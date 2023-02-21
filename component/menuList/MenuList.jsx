@@ -47,19 +47,9 @@ const ListMenu = [
         iconClose: <HiChevronRight />,
         subNav: [
             {
-                title: 'Popular questions',
-                icon: '',
-                path: '/support/FAQ',
-            },
-            {
-                title: 'Usage Policy',
-                icon: '',
-                path: '/support/usage-policy',
-            },
-            {
                 title: 'Feedback',
                 icon: '',
-                path: '',
+                path: '/feedback',
             },
         ],
     },
@@ -70,11 +60,6 @@ const ListMenu = [
         iconOpen: <HiChevronDown />,
         iconClose: <HiChevronRight />,
         subNav: [
-            {
-                title: 'Report bugs/suggestions',
-                icon: '',
-                path: '',
-            },
             {
                 title: 'Notification',
                 icon: '',

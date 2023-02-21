@@ -1,40 +1,7 @@
 import React, { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
-const people = [
-    {
-        name: 'Thanh toán',
-        value: 'Thanh toán',
-    },
-    {
-        name: 'Đăng ký đăng nhập',
-        value: 'Đăng ký đăng nhập',
-    },
-    {
-        name: 'Trang không khả dụng',
-        value: 'Trang không khả dụng',
-    },
-    {
-        name: 'Mã xác nhận',
-        value: 'Mã xác nhận',
-    },
-    {
-        name: 'Khác',
-        value: 'Khác',
-    },
-    {
-        name: 'Khác',
-        value: 'Khác',
-    },
-    {
-        name: 'Khác',
-        value: 'Khác',
-    },
-    {
-        name: 'Khác',
-        value: 'Khác',
-    },
-];
-const InputSelect = ({ selected, setSelected, label, errors }) => {
+
+const InputSelect = ({ selected, setSelected, label, errors, listSelect }) => {
     return (
         <div className="mb-4">
             <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -55,7 +22,7 @@ const InputSelect = ({ selected, setSelected, label, errors }) => {
                         leaveTo="opacity-0"
                     >
                         <Listbox.Options className="absolute  space-y-2 z-10  mt-1 max-h-[200px] overflow-y-auto no-scrollbar w-full rounded-md bg-white py-2 px-2 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                            {people.map((person, personIdx) => (
+                            {listSelect.map((person, personIdx) => (
                                 <Listbox.Option
                                     key={personIdx}
                                     className={({ active }) =>
@@ -80,7 +47,7 @@ const InputSelect = ({ selected, setSelected, label, errors }) => {
                     </Transition>
                 </div>
             </Listbox>
-            {!selected && errors && <p className="mt-2 text-sm text-red-600">Trường này bắt buộc</p>}
+            {!selected && errors && <p className="mt-2 text-sm text-red-600">This field is required</p>}
         </div>
     );
 };

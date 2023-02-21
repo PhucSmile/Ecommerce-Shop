@@ -10,6 +10,25 @@ import { toast } from 'react-toastify';
 import InputLabel from '../input/InputLabel';
 import InputSelect from '../input/InputSelect';
 
+const listSelect = [
+    {
+        name: 'Payment',
+        value: 'Payment',
+    },
+    {
+        name: 'Login/Logout',
+        value: 'Login/Logout',
+    },
+    {
+        name: 'Page not available',
+        value: 'Page not available',
+    },
+    {
+        name: 'Verification',
+        value: 'Verification',
+    },
+];
+
 const listImagePayment = [
     {
         url: '/images/payment/JCB.png',
@@ -140,6 +159,7 @@ const ModalAddPayment = ({ isOpenModal2, setIsOpenModal2, addPayment }) => {
                                                 selected={selectedBank}
                                                 setSelected={setSelectedBank}
                                                 errors={errors}
+                                                listSelect={listSelect}
                                             />
                                             <InputLabel
                                                 label="Branch name"
