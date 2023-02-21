@@ -66,7 +66,9 @@ const DetailSection = ({ data }) => {
     return (
         <Helmet title="Detail">
             <Container>
-                <Breadcrumb path={path} />
+                <div className="mt-11 mb-5 lg:mt-[78px] lg:mb-[42px]">
+                    <Breadcrumb path={path} />
+                </div>
             </Container>
             <CommonSection
                 title={data?.category ? data?.category.replace('-', ' ') : ''}

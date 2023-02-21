@@ -19,7 +19,7 @@ const PaymentSettingPage = () => {
     return (
         <Container>
             {/* Breadcrumb */}
-            <div className="mt-[10px] mb-[55px]">
+            <div className="mt-11 mb-5 lg:mt-[78px] lg:mb-[42px]">
                 <Breadcrumb path={path} />
             </div>
             <ListPayment data={dataProfile?.data.bank} />

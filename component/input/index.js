@@ -4,3 +4,4 @@ export * from './InputSearch.jsx';
 export * from './FormAccount.jsx';
 export * from './InputSearch.jsx';
 export * from './InputUpload.jsx';
+export * from './InputSwitch.jsx';

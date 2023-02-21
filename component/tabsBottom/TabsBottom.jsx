@@ -35,7 +35,7 @@ export default function TabsBottom() {
     const router = useRouter();
     console.log('router', router.pathname);
     return (
-        <div className=" bg-[#ffffffcc] shadow-paymentSetting  pb-0 sm:pb-[10px] w-full  sm:static   md:px-[15px] sm:px-0 z-50">
+        <div className=" bg-white shadow-paymentSetting  pb-0 sm:pb-[10px] w-full  sm:static   md:px-[15px] sm:px-0 z-50">
             <Container>
                 <div className="list-bottom flex justify-between  md:px-5">
                     {listTabs.map((item, index) => (

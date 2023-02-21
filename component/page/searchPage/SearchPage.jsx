@@ -188,7 +188,9 @@ const SearchPage = () => {
 
     return (
         <Container>
-            <Breadcrumb path={path} />
+            <div className="mt-11 mb-5 lg:mt-[78px] lg:mb-[42px]">
+                <Breadcrumb path={path} />
+            </div>
             {/* nav search Mobile */}
             <NavSearchMobile
                 dataCategories={dataCategories?.data}

@@ -1,4 +1,3 @@
-import { Listbox, Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
 import * as Yup from 'yup';
@@ -90,7 +89,7 @@ const FeedbackPage = () => {
         <>
             <Container>
                 {/* Breadcrumb */}
-                <div className="my-5 lg:my-7">
+                <div className="mt-11 mb-5 lg:mt-[78px] lg:mb-[42px]">
                     <Breadcrumb path={path} />
                 </div>
                 <Goback title="Feedback" />

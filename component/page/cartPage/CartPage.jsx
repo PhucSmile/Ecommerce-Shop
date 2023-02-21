@@ -66,7 +66,9 @@ const CartPage = () => {
     return (
         <Helmet title="title">
             <Container>
-                <Breadcrumb path={path} />
+                <div className="mt-11 mb-5 lg:mt-[78px] lg:mb-[42px]">
+                    <Breadcrumb path={path} />
+                </div>
             </Container>
             <CommonSection title={'Shopping Cart'} image={'/images/common/cart.png'} />
             <section>

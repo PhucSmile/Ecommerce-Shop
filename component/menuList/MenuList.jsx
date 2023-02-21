@@ -63,7 +63,7 @@ const ListMenu = [
             {
                 title: 'Notification',
                 icon: '',
-                path: '',
+                path: '/notification',
             },
         ],
     },
