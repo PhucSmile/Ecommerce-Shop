@@ -11,6 +11,14 @@ import { useEditProfileApi } from '@/hook/useAuthApi';
 import { toast } from 'react-toastify';
 
 import Select from '../select/Select';
+
+import GoogleMaps from '../maps/GoogleMaps';
+
+import Geocode from '../utils/configGeocode';
+
+const District = ['Quận 1', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Thành Phố Thủ Đức'];
+const Wards = ['Phường Bến Nghé', 'Phường Bến Thành', 'Phường Cầu Kho', 'Phường Cầu Ông Lãnh'];
+
 const schema = Yup.object().shape({
     username: Yup.string().required('Please enter your user name'),
     address: Yup.string().required('Please enter your address'),
@@ -26,9 +34,11 @@ const FormAccount = ({ data }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [selectDistrict, setSelectDistrict] = useState('District');
     const [selectWards, setSelectWard] = useState('Wards');
-
-    const District = ['Quận 1', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Thành Phố Thủ Đức'];
-    const Wards = ['Phường Bến Nghé', 'Phường Bến Thành', 'Phường Cầu Kho', 'Phường Cầu Ông Lãnh'];
+    const [valueLocation, setValueLocation] = useState({
+        address: null,
+        lat: null,
+        lng: null,
+    });
 
     useEffect(() => {
         if (data) {
@@ -40,6 +50,10 @@ const FormAccount = ({ data }) => {
             setValue('email', data?.email);
             setValue('phone', data?.phone);
             setValue('password', data?.password);
+            setValueLocation({
+                lat: data?.address?.coordinates?.lat,
+                lng: data?.address?.coordinates?.lng,
+            });
         }
     }, [data]);
 
@@ -52,13 +66,32 @@ const FormAccount = ({ data }) => {
         resolver: yupResolver(schema),
     });
 
+    const handleChangeGoogle = (value) => {
+        // get ADDRESS from lat & lng values
+        Geocode.fromLatLng(value.lat(), value.lng()).then(
+            (response) => {
+                const address = response.results[0].formatted_address;
+
+                setValueLocation({
+                    address: address,
+                    lat: value.lat(),
+                    lng: value.lng(),
+                });
+                setValue('address', address);
+            },
+            (error) => {
+                console.error(error);
+            },
+        );
+    };
+
     const onSubmitInfo = async (values) => {
-        const newValues = [{ ...values, district: selectDistrict, wards: selectWards }];
+        const newValues = [{ ...values, district: selectDistrict, wards: selectWards, address: valueLocation }];
         console.log('values', newValues);
         try {
             await useEditProfileApiMutate.mutate(newValues, {
                 onSuccess: (res) => {
-                    console.log('res gửi thành công', res);
+                    console.log('res ', res);
                     toast.success('Updated profile successfully');
                 },
             });
@@ -95,47 +128,8 @@ const FormAccount = ({ data }) => {
                                     <img
                                         src="/images/svg/date.svg"
                                         alt=""
-                                        className="absolute right-16 top-[10px] w-5 h-5"
+                                        className="absolute right-[5%] lg:right-[13%] top-[10px] w-5 h-5"
                                     />
-                                </div>
-                            </div>
-                            <div className="w-full lg:w-[90%] py-2">
-                                <InputLabel
-                                    placeholder={'address'}
-                                    type="text"
-                                    name="address"
-                                    register={register}
-                                    isErr={errors?.address}
-                                    notication={errors?.address?.message}
-                                />
-                            </div>
-                            <div className="w-full lg:w-[90%] py-2 flex ">
-                                <div className="w-1/2 pr-2">
-                                    <div className="relative">
-                                        <div>
-                                            <Select
-                                                data={District}
-                                                selected={selectDistrict}
-                                                setSelected={setSelectDistrict}
-                                                isPageProfile
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-1/2 pl-2">
-                                    <div className="relative">
-                                        <div>
-                                            <Select
-                                                data={Wards}
-                                                selected={selectWards}
-                                                setSelected={setSelectWard}
-                                                isPageProfile
-                                            />
-                                        </div>
-                                        <div className="w-[30px] h-[30px] absolute top-[50%] -translate-y-1/2 right-2 ">
-                                            <img src={'/images/svg/arrow_down.svg'} alt="" />
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div className="flex space-x-2 lg:space-x-8 mt-3 pl-2 lg:pl-4">
@@ -167,6 +161,61 @@ const FormAccount = ({ data }) => {
                                         <p>Female</p>
                                     </div>
                                 </div>
+                            </div>
+                            <div className="w-full lg:w-[90%] py-2">
+                                <InputLabel
+                                    placeholder={'address'}
+                                    type="text"
+                                    name="address"
+                                    register={register}
+                                    isErr={errors?.address}
+                                    notication={errors?.address?.message}
+                                />
+                            </div>
+                            {/* Select City */}
+                            {/* <div className="w-full lg:w-[90%] py-2 flex ">
+                                <div className="w-1/2 pr-2">
+                                    <div className="relative">
+                                        <div>
+                                            <Select
+                                                data={District}
+                                                selected={selectDistrict}
+                                                setSelected={setSelectDistrict}
+                                                isPageProfile
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-1/2 pl-2">
+                                    <div className="relative">
+                                        <div>
+                                            <Select
+                                                data={Wards}
+                                                selected={selectWards}
+                                                setSelected={setSelectWard}
+                                                isPageProfile
+                                            />
+                                        </div>
+                                        <div className="w-[30px] h-[30px] absolute top-[50%] -translate-y-1/2 right-2 ">
+                                            <img src={'/images/svg/arrow_down.svg'} alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> */}
+                            {/* Maps */}
+                            <div className="w-full lg:w-[90%] py-2">
+                                <GoogleMaps
+                                    height="400px"
+                                    onChange={handleChangeGoogle}
+                                    value={
+                                        valueLocation.lat && valueLocation.lng
+                                            ? { lat: valueLocation.lat, lng: valueLocation.lng }
+                                            : {
+                                                  lat: data?.address?.coordinates?.lat,
+                                                  lng: data?.address?.coordinates?.lng,
+                                              }
+                                    }
+                                />
                             </div>
                         </div>
                     </div>
