@@ -1,10 +1,9 @@
 import { IconArrowDown, IconLogout } from '@/assets/svg';
-import { Menu, Popover, Transition } from '@headlessui/react';
-import Image from 'next/image';
-import React, { Fragment } from 'react';
-import MenuList from '../menuList/MenuList';
+import { Menu, Transition } from '@headlessui/react';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { Fragment } from 'react';
+import MenuList from '../menuList/MenuList';
 
 const ProfileUser = ({ session }) => {
     return (

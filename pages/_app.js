@@ -13,20 +13,22 @@ import { store } from '@/store/store';
 
 import { ToastContainer } from 'react-toastify';
 import { MainLayout } from '@/layout';
+import { useState } from 'react';
+import { config } from './api/[...path]';
 
 // Create a client
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            refetchOnWindowFocus: false,
-            retry: false,
-        },
-    },
-});
+// const queryClient = new QueryClient({
+//     defaultOptions: {
+//         queries: {
+//             refetchOnWindowFocus: false,
+//             retry: false,
+//         },
+//     },
+// });
 
 function MyApp(props) {
     const { Component, pageProps, session, settings } = props;
-
+    const [queryClient] = useState(() => new QueryClient(config));
     // const Layout = Component.Layout ?? MainLayout;
     // Use the layout defined at the page level, if available
     const renderWithLayout =
@@ -68,11 +70,11 @@ function MyApp(props) {
                 {/* <meta property="og:image" content="" alt="cover" /> */}
                 <link rel="shortcut icon" href="/favicon.png" />
             </Head>
-            <SessionProvider session={session}>
-                <Provider store={store}>
-                    <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
-                        <QueryClientProvider client={queryClient}>
-                            <Hydrate state={pageProps.dehydratedState}>
+            <QueryClientProvider client={queryClient}>
+                <Hydrate state={pageProps.dehydratedState}>
+                    <SessionProvider session={session}>
+                        <Provider store={store}>
+                            <AnimatePresence exitBeforeEnter onExitComplete={handleExitComplete}>
                                 <ToastContainer
                                     theme="light"
                                     position="top-right"
@@ -81,11 +83,11 @@ function MyApp(props) {
                                     pauseOnHover={false}
                                 />
                                 {renderWithLayout(<Component {...pageProps} />)}
-                            </Hydrate>
-                        </QueryClientProvider>
-                    </AnimatePresence>
-                </Provider>
-            </SessionProvider>
+                            </AnimatePresence>
+                        </Provider>
+                    </SessionProvider>
+                </Hydrate>
+            </QueryClientProvider>
         </>
     );
 }

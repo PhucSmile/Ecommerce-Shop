@@ -8,12 +8,39 @@ import Trending from '@/component/trending/Treding';
 import React from 'react';
 import FeatureProduct from '@/component/FeatureProduct/FeatureProduct';
 
+import { dehydrate, QueryClient } from '@tanstack/react-query';
+import { productApi } from '@/apiClient/productApi';
+import { categoryApi } from '@/apiClient/categoryApi';
+
+export async function getStaticProps() {
+    const queryClient = new QueryClient();
+
+    await Promise.all([
+        queryClient.prefetchQuery(['get-all-products'], async () => {
+            const res = await productApi.getAll();
+            return res.data.data;
+        }),
+
+        queryClient.prefetchQuery(['get-all-categories'], async () => {
+            const res = await categoryApi.getAllCategories();
+            return res.data.data;
+        }),
+    ]);
+
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+        },
+        // revalidate: 60,
+    };
+}
+
 export default function Homepage() {
     return (
         <>
             <HeroSection />
             <Services />
-            <FeatureProduct />
+            {/* <FeatureProduct /> */}
             <Trending />
             <BestSales />
             <TimeCount />

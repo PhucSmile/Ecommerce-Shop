@@ -1,7 +1,5 @@
-import React from 'react';
-import { Container } from '../common';
-import { motion } from 'framer-motion';
 import { IconDollar, IconRefresh, IconSecure, IconTruck } from '@/assets/svg';
+import { Container } from '../common';
 
 const serviceData = [
     {
