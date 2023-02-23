@@ -26,22 +26,14 @@ const ProductCart = ({ data }) => {
 
     return (
         <div className="shadow flex flex-col ">
-            <Link href={`/product-detail/${data?.id}`} className="shrink-0">
+            <Link href={`/products/${data?.id}`} className="shrink-0">
                 <motion.div whileHover={{ scale: 0.9 }} className="relative w-full h-[150px] md:h-[220px] ">
-                    <Image
-                        src={data?.images[0]}
-                        layout="fill"
-                        objectFit="contain"
-                        alt="image-product"
-                        sizes="(max-width: 768px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw"
-                    />
+                    <Image src={data?.images[0]} layout="fill" objectFit="contain" alt="image-product" priority />
                 </motion.div>
             </Link>
             <div className="p-2 flex flex-col flex-1">
                 <div>
-                    <Link href={`/product-detail/${data?.id}`}>
+                    <Link href={`/products/${data?.id}`}>
                         <h3 className="product__cart-title  text-base lg:text-xl font-semibold mt-[15px] h-[48px] lg:h-[56px] ">
                             {data?.title}
                         </h3>

@@ -17,8 +17,9 @@ export const useProductLimitApi = (params) => {
 
 export const useDetailProductApi = (id) => {
     return useQuery({
-        queryKey: [`get-detail-product${id}`],
+        queryKey: [`get-detail-product`, id],
         queryFn: () => productApi.getDetail(id),
+        keepPreviousData: true,
     });
 };
 

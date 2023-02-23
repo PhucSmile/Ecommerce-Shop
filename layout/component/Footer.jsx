@@ -27,7 +27,7 @@ const ListLinks = [
     },
     {
         name: 'Search',
-        url: '/search',
+        url: '/products/search',
     },
     {
         name: 'Cart',

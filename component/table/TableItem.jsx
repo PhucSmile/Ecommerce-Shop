@@ -36,7 +36,7 @@ const TableItem = ({ data }) => {
             <div className="flex items-center justify-between space-x-[6px] ">
                 <div className=" flex justify-between w-full shadow-checkbox ">
                     <div className="flex justify-between items-center space-x-[10px]">
-                        <Link href={`/product-detail/${data?.id}`}>
+                        <Link href={`/products/${data?.id}`}>
                             <div className="relative h-[80px] w-[80px]  md:h-[100px] md:w-[100px] hover:opacity-75">
                                 <Image
                                     src={data?.image}
@@ -51,7 +51,7 @@ const TableItem = ({ data }) => {
                         </Link>
 
                         <div className="flex flex-col justify-center item-center  ">
-                            <Link href={`/product-detail/${data?.id}`}>
+                            <Link href={`/products/${data?.id}`}>
                                 {' '}
                                 <h5 className="font-bold cursor-pointer hover:opacity-75">{data?.title}</h5>
                             </Link>

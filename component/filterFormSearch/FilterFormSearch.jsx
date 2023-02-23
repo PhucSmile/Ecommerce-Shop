@@ -34,7 +34,7 @@ export default function FilterFromSearch() {
                 );
                 router.push(
                     {
-                        pathname: '/search',
+                        pathname: '/products/search',
                         query: {
                             q: querySearch,
                         },

@@ -16,7 +16,7 @@ const listTabs = [
     },
     {
         title: 'Search',
-        href: '/search',
+        href: '/products/search',
         icon: <IconSearch className="w-6 h-6 " />,
     },
     {

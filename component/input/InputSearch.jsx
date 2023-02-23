@@ -30,7 +30,7 @@ const InputSearch = ({
     const handlePopular = (item) => {
         router.push(
             {
-                pathname: '/search',
+                pathname: '/products/search',
                 query: {
                     category: item,
                 },
@@ -157,7 +157,7 @@ const InputSearch = ({
                                                                         );
                                                                         router.push(
                                                                             {
-                                                                                pathname: '/search',
+                                                                                pathname: '/products/search',
                                                                                 query: {
                                                                                     q: person.q,
                                                                                 },

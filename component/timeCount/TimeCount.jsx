@@ -19,7 +19,7 @@ const TimeCount = () => {
                             <h4 className="text-sm lg:text-base font-medium mb-2">Limited Offers</h4>
                             <h3 className="text-lg lg:text-xl font-semibold mb-4">Quantity Limited</h3>
                             <Clock />
-                            <Link href={`/product-detail/${data?.data.id}`}>
+                            <Link href={`/products/${data?.data?.id}`}>
                                 <motion.button
                                     whileHover={{ scale: 1.1 }}
                                     className="btn-outline text-white bg-[#202020] border-white mt-6 lg:mt-10 hover:bg-white hover:text-[#202020] hover:border-[#202020]"
@@ -29,9 +29,9 @@ const TimeCount = () => {
                             </Link>
                         </div>
                         <div className="mx-auto lg:ml-auto">
-                            <Link href={`/product-detail/${data?.data.id}`}>
+                            <Link href={`/products/${data?.data?.id}`}>
                                 <div className="relative h-[245px] w-[300px] lg:h-[245px] lg:w-[445px] cursor-pointer">
-                                    <Image src={data?.data.thumbnail} fill contain alt={data?.data?.title} />
+                                    <Image src={data?.data?.thumbnail} fill contain alt={data?.data?.title} />
                                 </div>
                             </Link>
                         </div>

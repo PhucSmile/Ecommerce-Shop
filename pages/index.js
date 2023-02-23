@@ -1,3 +1,4 @@
+import React from 'react';
 import BestSales from '@/component/bestSales/BestSales';
 import HeroSection from '@/component/heroSection/HeroSection';
 import PopularMen from '@/component/popular/PopularMen';
@@ -5,8 +6,7 @@ import PopularWomen from '@/component/popular/PopularWomen';
 import Services from '@/component/services/Services';
 import TimeCount from '@/component/timeCount/TimeCount';
 import Trending from '@/component/trending/Treding';
-import React from 'react';
-import FeatureProduct from '@/component/FeatureProduct/FeatureProduct';
+import Feature from '@/component/feature/Feature';
 
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { productApi } from '@/apiClient/productApi';
@@ -25,6 +25,11 @@ export async function getStaticProps() {
             const res = await categoryApi.getAllCategories();
             return res.data.data;
         }),
+
+        queryClient.prefetchQuery([`get-detail-product`, 1], async () => {
+            const res = await productApi.getDetail(1);
+            return res.data.data;
+        }),
     ]);
 
     return {
@@ -40,7 +45,7 @@ export default function Homepage() {
         <>
             <HeroSection />
             <Services />
-            {/* <FeatureProduct /> */}
+            <Feature />
             <Trending />
             <BestSales />
             <TimeCount />

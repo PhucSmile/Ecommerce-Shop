@@ -13,7 +13,6 @@ import { toast } from 'react-toastify';
 import Select from '../select/Select';
 
 import GoogleMaps from '../maps/GoogleMaps';
-
 import Geocode from '../utils/configGeocode';
 
 const District = ['Quận 1', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Thành Phố Thủ Đức'];

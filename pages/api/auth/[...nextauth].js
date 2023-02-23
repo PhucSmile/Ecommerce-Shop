@@ -32,9 +32,9 @@ export default NextAuth({
 
     callbacks: {
         async jwt({ token, user, account }) {
-            console.log('account', account);
-            console.log('token', token);
-            console.log('user', user);
+            // console.log('account', account);
+            // console.log('token', token);
+            // console.log('user', user);
             try {
                 if (account) {
                     token.accessToken = token.access_token;
@@ -52,7 +52,7 @@ export default NextAuth({
 
             session.accessToken = token.accessToken;
             session.user = token.user;
-            // session.expires = new Date(token.accessTokenExpiry).toISOString();
+            session.expires = new Date(token.accessTokenExpiry).toISOString();
             return session;
         },
     },

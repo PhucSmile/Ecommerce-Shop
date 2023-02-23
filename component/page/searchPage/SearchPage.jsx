@@ -100,7 +100,7 @@ const SearchPage = () => {
     };
     const handleStopFilter = async () => {
         setLoadingQuitSearch(true);
-        router.push('/search');
+        router.push('/products/search');
         setTimeout(() => {
             setLoadingQuitSearch(false);
         }, 1000);
@@ -125,7 +125,7 @@ const SearchPage = () => {
         if (selectedCategories !== 'Select category') {
             router.replace(
                 {
-                    pathname: '/search',
+                    pathname: '/products/search',
                     query: {
                         category: selectedCategories,
                     },
