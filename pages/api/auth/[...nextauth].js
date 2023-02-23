@@ -52,7 +52,7 @@ export default NextAuth({
 
             session.accessToken = token.accessToken;
             session.user = token.user;
-            session.expires = new Date(token.accessTokenExpiry).toISOString();
+            // session.expires = new Date(token.accessTokenExpiry).toISOString();
             return session;
         },
     },

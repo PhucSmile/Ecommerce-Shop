@@ -13,6 +13,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import InputLabel from '@/component/input/InputLabel';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import GoogleMaps from '@/component/maps/GoogleMaps';
+import Geocode from '@/component/utils/configGeocode';
 
 const path = {
     pathOne: 'home',
@@ -31,10 +33,16 @@ const CheckoutPage = () => {
     const dataCartCheckout = useSelector(getDataCartItems);
     const [dataCart, setDataCart] = useState([]);
     const router = useRouter();
+    const [valueLocation, setValueLocation] = useState({
+        address: null,
+        lat: null,
+        lng: null,
+    });
 
     const {
         register,
         handleSubmit,
+        setValue,
         formState: { errors },
     } = useForm({
         resolver: yupResolver(schema),
@@ -46,6 +54,25 @@ const CheckoutPage = () => {
         }
     }, [dataCartCheckout]);
     console.log('dataCart', dataCart);
+
+    const handleChangeGoogle = (value) => {
+        // get ADDRESS from lat & lng values
+        Geocode.fromLatLng(value.lat(), value.lng()).then(
+            (response) => {
+                const address = response.results[0].formatted_address;
+
+                setValueLocation({
+                    address: address,
+                    lat: value.lat(),
+                    lng: value.lng(),
+                });
+                setValue('address', address);
+            },
+            (error) => {
+                console.error(error);
+            },
+        );
+    };
 
     const onSubmit = (values) => {
         console.log('values', values);
@@ -90,13 +117,15 @@ const CheckoutPage = () => {
                                         isErr={errors?.address}
                                         notication={errors?.address?.message}
                                     />
-                                    <InputLabel
-                                        label="Address"
-                                        type=""
-                                        name="address"
-                                        register={register}
-                                        isErr={errors?.address}
-                                        notication={errors?.address?.message}
+
+                                    <GoogleMaps
+                                        height="400px"
+                                        onChange={handleChangeGoogle}
+                                        value={
+                                            valueLocation.lat && valueLocation.lng
+                                                ? { lat: valueLocation.lat, lng: valueLocation.lng }
+                                                : null
+                                        }
                                     />
                                     <div className="flex flex-col mt-4 ">
                                         <label htmlFor="content" className="text-primary font-semibold mb-1 text-left">

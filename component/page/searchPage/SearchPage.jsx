@@ -4,7 +4,7 @@ import Loading from '@/component/common/Loading';
 
 import { useAllCategoriesApi, useFilterCategoryApi } from '@/hook/useCategoryApi';
 import { useSearchApi } from '@/hook/useProductApi';
-import { useQueryClient } from '@tanstack/react-query';
+import { QueryClient, dehydrate, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/router';
 
 import { useSelector } from 'react-redux';
@@ -12,6 +12,8 @@ import ProductCart from '@/component/product/ProductCart';
 import NavSearchMobile from '@/component/navSearchMobile/NavSearchMobile';
 import Image from 'next/image';
 import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
+import { categoryApi } from '@/apiClient/categoryApi';
+import { productApi } from '@/apiClient/productApi';
 
 const path = {
     pathOne: 'home',
@@ -19,6 +21,29 @@ const path = {
 };
 
 const listSortPrice = ['Sort', 'Reverse'];
+
+export async function getStaticProps() {
+    const queryClient = new QueryClient();
+
+    await Promise.all([
+        queryClient.prefetchQuery(['get-all-products'], async () => {
+            const res = await productApi.getAll();
+            return res.data.data;
+        }),
+
+        queryClient.prefetchQuery(['get-all-categories'], async () => {
+            const res = await categoryApi.getAllCategories();
+            return res.data.data;
+        }),
+    ]);
+
+    return {
+        props: {
+            dehydratedState: dehydrate(queryClient),
+        },
+        // revalidate: 60,
+    };
+}
 const SearchPage = () => {
     const [dataSearch, setDataSearch] = useState();
     const [stickyScroll, setStickyScroll] = useState(false);
