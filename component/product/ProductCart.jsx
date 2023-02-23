@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useCallback } from 'react';
 
 import { motion } from 'framer-motion';
@@ -28,7 +28,7 @@ const ProductCart = ({ data }) => {
         <div className="shadow flex flex-col ">
             <Link href={`/products/${data?.id}`} className="shrink-0">
                 <motion.div whileHover={{ scale: 0.9 }} className="relative w-full h-[150px] md:h-[220px] ">
-                    <Image src={data?.images[0]} layout="fill" objectFit="contain" alt="image-product" priority />
+                    <Image src={data?.images[0]} layout="fill" objectFit="contain" priority alt="image-product" />
                 </motion.div>
             </Link>
             <div className="p-2 flex flex-col flex-1">

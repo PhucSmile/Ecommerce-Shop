@@ -2,7 +2,7 @@ import { Container } from '@/component/common';
 import Helmet from '@/component/common/Helmet';
 import React, { useState } from 'react';
 import { Tab } from '@headlessui/react';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { InforAccount } from '.';
 import { useSession } from 'next-auth/react';
 import { useAuth } from '@/hook/useAuthApi';

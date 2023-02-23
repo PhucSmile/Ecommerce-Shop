@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import ProductCart from '@/component/product/ProductCart';
 import NavSearchMobile from '@/component/navSearchMobile/NavSearchMobile';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Breadcrumb from '@/component/breadcrumbs/Breadcrumb';
 import { categoryApi } from '@/apiClient/categoryApi';
 import { productApi } from '@/apiClient/productApi';
@@ -290,9 +290,7 @@ const SearchPage = () => {
                                                 src="/images/loadingPagination.svg"
                                                 alt="loading"
                                                 layout="fill"
-                                                sizes="(max-width: 768px) 100vw,
-                                            (max-width: 1200px) 50vw,
-                                            33vw"
+                                                objectFit="cover"
                                             />
                                         </div>
                                     </div>

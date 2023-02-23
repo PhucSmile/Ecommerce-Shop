@@ -5,7 +5,7 @@ import { Fragment, useState } from 'react';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { toast } from 'react-toastify';
 import InputLabel from '../input/InputLabel';
 import InputSelect from '../input/InputSelect';
@@ -122,7 +122,13 @@ const ModalAddPayment = ({ isOpenModal2, setIsOpenModal2, addPayment }) => {
                                             {listImagePayment.map((item, i) => {
                                                 return (
                                                     <div key={i} className={`relative ${item.with} ${item.height} `}>
-                                                        <Image src={item.url} layout="fill" objectFit="contain" />
+                                                        <Image
+                                                            src={item.url}
+                                                            layout="fill"
+                                                            objectFit="cover"
+                                                            priority
+                                                            alt="image"
+                                                        />
                                                     </div>
                                                 );
                                             })}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { Container } from '../common';
 
 import { motion } from 'framer-motion';
@@ -24,7 +24,7 @@ const HeroProduct = ({ data }) => {
                     </div>
                     <div className="px-3">
                         <div className="relative  h-[280px] w-full lg:h-[480px] cursor-pointer">
-                            <Image src={data?.images[0]} fill cover alt={data?.title} />
+                            <Image src={data?.images[0]} layout="fill" objectFit="contain" priority alt={data?.title} />
                         </div>
                     </div>
                 </div>

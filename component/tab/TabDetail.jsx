@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { motion } from 'framer-motion';
 
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -89,12 +89,9 @@ const TabDetail = ({ desc }) => {
                                     <Image
                                         src={item.image}
                                         layout="fill"
-                                        objectFit="contain"
+                                        objectFit="cover"
                                         alt="image-user"
                                         className="rounded-full"
-                                        sizes="(max-width: 768px) 100vw,
-                                        (max-width: 1200px) 50vw,
-                                        33vw"
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1">
@@ -163,7 +160,7 @@ const TabDetail = ({ desc }) => {
                                 <motion.button
                                     whileTap={{ scale: 1.5 }}
                                     type="submit"
-                                    className="btn-outline  w-full lg:w-[40%]  "
+                                    className="btn-outline w-full sm:w-[50%] lg:w-[40%]  "
                                 >
                                     Submit
                                 </motion.button>

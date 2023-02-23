@@ -3,7 +3,7 @@ import { Container } from '../common';
 
 import { motion } from 'framer-motion';
 import Clock from '../clock/Clock';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { useDetailProductApi } from '@/hook/useProductApi';
 import Link from 'next/link';
 
@@ -31,7 +31,12 @@ const TimeCount = () => {
                         <div className="mx-auto lg:ml-auto">
                             <Link href={`/products/${data?.data?.id}`}>
                                 <div className="relative h-[245px] w-[300px] lg:h-[245px] lg:w-[445px] cursor-pointer">
-                                    <Image src={data?.data?.thumbnail} fill contain alt={data?.data?.title} />
+                                    <Image
+                                        src={data?.data?.thumbnail}
+                                        layout="fill"
+                                        objectFit="contain"
+                                        alt={data?.data?.title}
+                                    />
                                 </div>
                             </Link>
                         </div>

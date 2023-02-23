@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 
 export function InforAccount({ data, isMobile = false }) {
     return (
@@ -14,6 +14,7 @@ export function InforAccount({ data, isMobile = false }) {
                             src={data?.image || '/images/NoUser.png'}
                             layout="fill"
                             objectFit="cover"
+                            priority
                             alt="Logo"
                             className="rounded-full"
                         />

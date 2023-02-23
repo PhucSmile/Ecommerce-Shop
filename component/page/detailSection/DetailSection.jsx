@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import CommonSection from '@/component/common/CommonSection';
 import Helmet from '@/component/common/Helmet';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { Container } from '@/component/common';
 
 import { motion } from 'framer-motion';
@@ -52,7 +52,7 @@ const DetailSection = ({ data }) => {
                 //     </div>
                 // </div>
                 <a>
-                    <img src={data?.images[i]} alt="image-product" />
+                    <img src={data?.images[i]} alt="image-product" className="object-cover" />
                 </a>
             );
         },
@@ -87,15 +87,7 @@ const DetailSection = ({ data }) => {
                                     key={index}
                                     className="relative h-[355px] sm:h-[400px] md:h-[500px]  w-[98%] rounded-md "
                                 >
-                                    <Image
-                                        src={item}
-                                        layout="fill"
-                                        objectFit="contain"
-                                        alt="image-detail"
-                                        sizes="(max-width: 768px) 100vw,
-                                        (max-width: 1200px) 50vw,
-                                        33vw"
-                                    />
+                                    <Image src={item} alt="image-detail" layout="fill" objectFit="contain" priority />
                                 </div>
                             ))}
                         </Slider>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useEffect, useState } from 'react';
 
 import * as Yup from 'yup';
@@ -64,15 +64,7 @@ const SignUp = () => {
         >
             <div className="flex justify-center items-center space-x-[8px]">
                 <div className="relative h-[35px] w-[35px] ">
-                    <Image
-                        src="/images/logo.png"
-                        layout="fill"
-                        objectFit="contain"
-                        alt="Logo"
-                        sizes="(max-width: 768px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw"
-                    />
+                    <Image src="/images/logo.png" alt="Logo" layout="fill" objectFit="contain" />
                 </div>
                 <div className="text-center text-primary font-bold text-base lg:text-[20px]">
                     <h3 className="mt-[5px]">Ecommerce</h3>

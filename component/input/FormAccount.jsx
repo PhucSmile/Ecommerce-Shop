@@ -271,7 +271,7 @@ const FormAccount = ({ data }) => {
                         <button
                             type=""
                             onClick={(e) => e.preventDefault()}
-                            className="btn-primary px-10 lg:px-20 py-2 min-w-[140px]"
+                            className="btn-primary px-10 lg:px-20 py-2 w-full sm:w-[40%] lg:w-[35%]"
                         >
                             Cancel
                         </button>
@@ -279,7 +279,7 @@ const FormAccount = ({ data }) => {
                         <button
                             type="submit"
                             disabled={!errors === null}
-                            className={`btn-primary px-10 lg:px-20 py-2 min-w-[140px] opacity-50`}
+                            className={`btn-primary px-10 lg:px-20 py-2 w-full sm:w-[40%] lg:w-[35%]`}
                         >
                             Save
                         </button>

@@ -1,5 +1,5 @@
 import { IconDelete, IconMinus, IconPlus } from '@/assets/svg';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React from 'react';
 import { formatPrice } from '../utils/helpers';
 import { motion } from 'framer-motion';
@@ -38,15 +38,7 @@ const TableItem = ({ data }) => {
                     <div className="flex justify-between items-center space-x-[10px]">
                         <Link href={`/products/${data?.id}`}>
                             <div className="relative h-[80px] w-[80px]  md:h-[100px] md:w-[100px] hover:opacity-75">
-                                <Image
-                                    src={data?.image}
-                                    layout="fill"
-                                    objectFit="contain"
-                                    alt="Logo"
-                                    sizes="(max-width: 768px) 100vw,
-                            (max-width: 1200px) 50vw,
-                            33vw"
-                                />
+                                <Image src={data?.image} layout="fill" objectFit="cover" alt="Logo" />
                             </div>
                         </Link>
 

@@ -47,7 +47,7 @@ const ProfileUser = ({ session }) => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-4 w-[300px] overflow-hidden shadow-2xl rounded-l-2xl rounded-b-2xl bg-white focus:outline-none px-6 py-5 z-[90] flex flex-col gap-4">
+                    <Menu.Items className="origin-top-right absolute right-0 mt-4 w-[300px] overflow-hidden shadow-2xl rounded-l-2xl rounded-b-2xl bg-white focus:outline-none px-6 py-5 z-10 flex flex-col gap-4">
                         <Menu.Item>
                             <MenuList />
                         </Menu.Item>

@@ -17,16 +17,14 @@ const ListPayment = ({ data, hiddenShadow = false }) => {
         setDefaultBtn(!defaultBtn);
     };
 
-    const handleDelete = () => {
-        console.log('delête');
-    };
+    const handleDelete = () => {};
     console.log('data', data);
     return (
         <>
             <div
-                className={`flex flex-col gap-6 ${
+                className={`flex flex-col  gap-6 ${
                     !hiddenShadow && 'shadow-paymentSetting'
-                }  rounded-3xl max-w-[888px] mx-auto w-full  mb-[120px] p-6`}
+                }  rounded-3xl max-w-[888px] mx-auto w-full  mb-[120px] p-4 md:p-6`}
             >
                 <button className="btn-add-payment" onClick={HandleAddPayment}>
                     Add payment card <span>+</span>

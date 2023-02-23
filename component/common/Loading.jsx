@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React from 'react';
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
@@ -40,9 +40,8 @@ const Loading = () => {
                                             src="/images/loading.svg"
                                             alt="loading"
                                             layout="fill"
-                                            sizes="(max-width: 768px) 100vw,
-                                            (max-width: 1200px) 50vw,
-                                            33vw"
+                                            objectFit="cover"
+                                            priority
                                         />
                                     </div>
                                 </div>
